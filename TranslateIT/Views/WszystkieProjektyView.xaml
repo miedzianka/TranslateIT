@@ -1,0 +1,55 @@
+﻿<local:AllViewBase x:Class="TranslateIT.Views.WszystkieProjektyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TranslateIT.Views"             
+             xmlns:resx="clr-namespace:TranslateIT.ViewResources" 
+                   xmlns:viewmodels="clr-namespace:TranslateIT.ViewModels" 
+                   d:DataContext="{d:DesignInstance Type=viewmodels:WszystkieProjektyViewModel}"
+                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="Gray" BorderThickness="1" Margin="2">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Projekty z okresu od:" ToolTip="Data, zatrudnienia prawcownika" Width="138" Margin="2"/>
+                    <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BaseDatePicker}"/>
+                    <Separator Width="143" Visibility="Hidden"/>
+                    <Label Content="Do okresu:" Width="135" Margin="2"/>
+                    <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BlueDatePicker}" />
+                </StackPanel>
+            </Border>
+            <Expander Header="Projekty" Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="2" IsExpanded="True" Style="{StaticResource BaseExpander}">
+                <Grid>
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" SelectedItem="{Binding Path=WybranyProjekt,Mode=TwoWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="IdProjektu" Binding="{Binding Path=IdProjektu}" Header="ID"/>
+                            <DataGridTextColumn x:Name="FirmaNazwa" Binding="{Binding Path=FirmaNazwa}" Header="Nazwa firmy"/>
+                            <DataGridTextColumn x:Name="FirmaNIP" Binding="{Binding Path=FirmaNIP}" Header="NIP firmy"/>
+                            <DataGridTextColumn x:Name="DaneKoordynatorDubbing" Binding="{Binding Path=DaneKoordynatorDubbing}" Header="Koordynator dubbingu"/>
+                            <DataGridTextColumn x:Name="DaneKoordynatorLektor" Binding="{Binding Path=DaneKoordynatorLektor}" Header="Koordynator lektora"/>
+                            <DataGridTextColumn x:Name="DaneKoordynatorNapisy" Binding="{Binding Path=DaneKoordynatorNapisy}" Header="Koordynator napisow"/>
+                            <DataGridTextColumn x:Name="DaneTlumaczDubbing" Binding="{Binding Path=DaneTlumaczDubbing}" Header="Dubbing tlumaczyl/a"/>
+                            <DataGridTextColumn x:Name="DaneTlumaczLektor" Binding="{Binding Path=DaneTlumaczLektor}" Header="Lektora tlumaczyl/a"/>
+                            <DataGridTextColumn x:Name="DaneTlumaczNapisy" Binding="{Binding Path=DaneTlumaczNapisy}" Header="Napisy tlumaczyl/a"/>
+                            <DataGridTextColumn x:Name="EtapProjektu" Binding="{Binding Path=EtapProjektu}" Header="Etap projekty"/>
+                            <DataGridTextColumn x:Name="CzyDubbing" Binding="{Binding Path=CzyDubbing}" Header="Dubbing?"/>
+                            <DataGridTextColumn x:Name="CzyLektor" Binding="{Binding Path=CzyLektor}" Header="Lektor?"/>
+                            <DataGridTextColumn x:Name="CzyNapisy" Binding="{Binding Path=CzyNapisy}" Header="Napisy?"/>
+                            <DataGridTextColumn x:Name="Budzet" Binding="{Binding Path=Budzet}" Header="Budzet"/>
+                            <DataGridTextColumn x:Name="JezykOryginalny" Binding="{Binding Path=JezykOryginalny}" Header="Język oryginalny"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Expander>
+        </Grid>
+    </ScrollViewer>
+</local:AllViewBase>

@@ -1,0 +1,104 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Model\Entity\TranslateITModel.edmx" />
+    <None Remove="Views\add.png" />
+    <None Remove="Views\add_a_photo_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Views\add_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Views\akor.png" />
+    <None Remove="Views\book-alt.png" />
+    <None Remove="Views\DaneFirmy.png" />
+    <None Remove="Views\edit.png" />
+    <None Remove="Views\event_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Views\faktury.png" />
+    <None Remove="Views\Film.png" />
+    <None Remove="Views\inneprojektyDaneFirmy.png" />
+    <None Remove="Views\mic_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Views\movie_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Views\movie_filter_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Views\odcinek.png" />
+    <None Remove="Views\person_add_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Views\person_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Views\rezyser.png" />
+    <None Remove="Views\serial.png" />
+    <None Remove="Views\subtitles_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Remove="Views\umowy.png" />
+    <None Remove="Views\user-add.png" />
+    <None Remove="Views\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EntityDeploy Include="Model\Entity\TranslateITModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TranslateITModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+    <PackageReference Include="EntityFramework" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Azure.Amqp" Version="2.5.10" />
+    <PackageReference Include="MvvmLight" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Security" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\add.png" />
+    <Resource Include="Views\add_a_photo_FILL0_wght400_GRAD0_opsz48.png" />
+    <Resource Include="Views\add_FILL0_wght400_GRAD0_opsz48.png" />
+    <Resource Include="Views\akor.png" />
+    <Resource Include="Views\book-alt.png" />
+    <Resource Include="Views\DaneFirmy.png" />
+    <Resource Include="Views\edit.png" />
+    <Resource Include="Views\event_FILL0_wght400_GRAD0_opsz48.png" />
+    <Resource Include="Views\faktury.png" />
+    <Resource Include="Views\Film.png" />
+    <Resource Include="Views\inneprojektyDaneFirmy.png" />
+    <Resource Include="Views\mic_FILL0_wght400_GRAD0_opsz48.png" />
+    <Resource Include="Views\movie_FILL0_wght400_GRAD0_opsz48.png" />
+    <Resource Include="Views\movie_filter_FILL0_wght400_GRAD0_opsz48.png" />
+    <Resource Include="Views\odcinek.png" />
+    <Resource Include="Views\person_add_FILL0_wght400_GRAD0_opsz48.png" />
+    <Resource Include="Views\person_FILL0_wght400_GRAD0_opsz48.png" />
+    <Resource Include="Views\rezyser.png" />
+    <Resource Include="Views\serial.png" />
+    <Resource Include="Views\subtitles_FILL0_wght400_GRAD0_opsz48.png" />
+    <Resource Include="Views\umowy.png" />
+    <Resource Include="Views\user-add.png" />
+    <Resource Include="Views\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Model\Entity\TranslateITModel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TranslateITModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Update="ViewResources\GlobalResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GlobalResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="ViewResources\GlobalResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="503e7ce4c52448a78b4c66fb4b8e2c5e" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="TranslateITModel.Adiustator" Width="1.5" PointX="15.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Adres" Width="1.5" PointX="3" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Aktorzy" Width="1.5" PointX="15.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.DaneFirmy" Width="1.5" PointX="5.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Dzwiekowiec" Width="1.5" PointX="15.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.EtapyProjektu" Width="1.5" PointX="15.75" PointY="35.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Faktura" Width="1.5" PointX="7.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Film" Width="1.5" PointX="10.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.HarmonogramNagran" Width="1.5" PointX="23.25" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Jezyki" Width="1.5" PointX="15.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Koordynator" Width="1.5" PointX="15.75" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Kraj" Width="1.5" PointX="0.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Nagrania" Width="1.5" PointX="18" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Odcinki" Width="1.5" PointX="21" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Postacie" Width="1.5" PointX="18" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.PozycjaFaktury" Width="1.5" PointX="9.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.PozycjaUmowy" Width="1.5" PointX="24" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Pracownik" Width="1.5" PointX="13.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Projekt" Width="1.5" PointX="18" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Rezyserzy" Width="1.5" PointX="15.75" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.RodzajUmowy" Width="1.5" PointX="18.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.SalaNagraniowa" Width="1.5" PointX="21" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Serial" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Sezony" Width="1.5" PointX="5.25" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.SposobPlatnosci" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Stawki" Width="1.5" PointX="7.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Tlumacze" Width="1.5" PointX="15.75" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Trailer" Width="1.5" PointX="20.25" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TranslateITModel.Umowa" Width="1.5" PointX="20.75" PointY="23.75" IsExpanded="true" />
+        <AssociationConnector Association="TranslateITModel.FK_Adiustator_Pracownik" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Adres_Kraj" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_DaneFirmy_Adres" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Pracownik_Adres" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Aktorzy_Pracownik" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Nagrania_Aktorzy" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Postacie_Aktorzy" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Faktura_DaneFirmy" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Film_DaneFirmy" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Pracownik_DaneFirmy" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_DaneFirmy" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Umowa_DaneFirmy" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Dzwiekowiec_Pracownik" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Nagrania_Dzwiekowiec" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_EtapyProjektu" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Faktura_Pracownik" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Faktura_SposobPlatnosci" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_PozycjaFaktury_Faktura" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Film_Kraj" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Film_Projekt" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_HarmonogramNagran_Nagrania" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_HarmonogramNagran_SalaNagraniowa" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_Jezyki" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_Jezyki1" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_Koordynator" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_Koordynator1" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_Koordynator2" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Serial_Kraj" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Nagrania_Postacie" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Nagrania_Projekt" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Nagrania_Rezyserzy" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Odcinki_Serial" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Odcinki_Sezony" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Odcinki_Tlumacze" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Postacie_Projekt" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_PozycjaFaktury_Projekt" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_PozycjaFaktury_Stawki" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_PozycjaUmowy_Projekt" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_PozycjaUmowy_Stawki" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_PozycjaUmowy_Umowa" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Rezyserzy_Pracownik" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Tlumacze_Pracownik" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Umowa_Pracownik" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_Tlumacze" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_Tlumacze1" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Projekt_Tlumacze2" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Trailer_Projekt" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Umowa_RodzajUmowy" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Sezony_Serial" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Umowa_SposobPlatnosci" ManuallyRouted="false" />
+        <AssociationConnector Association="TranslateITModel.FK_Odcinki_Projekt" />
+        <AssociationConnector Association="TranslateITModel.FK_Koordynator_Pracownik" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

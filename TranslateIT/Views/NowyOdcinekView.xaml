@@ -1,0 +1,112 @@
+﻿<local:OneViewBase x:Class="TranslateIT.Views.NowyOdcinekView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TranslateIT.Views"
+             xmlns:resx="clr-namespace:TranslateIT.ViewResources" 
+                   xmlns:viewmodels="clr-namespace:TranslateIT.ViewModels" 
+                   d:DataContext="{d:DesignInstance Type=viewmodels:NowyOdcinekViewModel}"
+                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1120">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResource.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Visible">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="Odcinek" Style="{StaticResource GroupBoxStandardowy}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <Label Content="Tytuł odcinka" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="{Binding Path=NazwaOdcinka, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}"/>
+                                        
+                    <Label Content="Ile piosenek?" Grid.Column="2" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="{Binding Path=Piosenki, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="3" Grid.Row="1" Width="50" HorizontalAlignment="Left" Style="{StaticResource TextBoxStandardowy}"/>
+                    
+                    <Label Grid.Row="1" Content="Długość odcinka:" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="{Binding Path=DlugoscOdcinkaMIN, UpdateSourceTrigger=PropertyChanged}" Width="100" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}"/>
+
+                    <Label Content="Numer odcinka" Grid.Column="2" Grid.Row="0" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="{Binding Path=NumerOdcinka, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="3" Grid.Row="0" Width="50" HorizontalAlignment="Left" Style="{StaticResource TextBoxStandardowy}"/>
+                    
+                    <Label Grid.Row="2" Content="Ilosc Linijek:" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="{Binding Path=IloscLinijek, UpdateSourceTrigger=PropertyChanged}" Width="100" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBoxStandardowy}"/>
+
+                    <Label Content="Data premiery" Style="{StaticResource LabelStandardowy}" Grid.Column="6"/>
+                    <DatePicker Text="{Binding Path=DataPrzyjecia, UpdateSourceTrigger=PropertyChanged}" Grid.Column="7" Style="{StaticResource DatePickerStandardowy}"/>
+                    
+                    <Label Content="Akty" Grid.Column="6" Grid.Row="1" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="{Binding Path=Akty, UpdateSourceTrigger=PropertyChanged}" Grid.Column="7" Grid.Row="1" Style="{StaticResource TextBoxStandardowy}" Grid.ColumnSpan="2"/>
+                    
+                    <Label Content="Ile postaci?" Grid.Column="6" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="{Binding Path=Postacie, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="7" Grid.Row="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    
+                    <Label Content="Rok produkcji" Grid.Column="6" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
+                    <DatePicker Text="{Binding Path=DataProdukcji, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="7" Grid.Row="3" Style="{StaticResource DatePickerStandardowy}"/>
+                    
+                    <Label Content="Deadline" Grid.Column="6" Grid.Row="4" Style="{StaticResource LabelStandardowy}"/>
+                    <DatePicker SelectedDate="{Binding Path=Deadline, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="7" Grid.Row="4" Style="{StaticResource DatePickerStandardowy}"/>
+                    
+                    <Label Content="Budzet" Grid.Column="2" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="{Binding Path=Budzet, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="3" Grid.Row="2" Style="{StaticResource TextBoxStandardowy}"/>
+                    
+                    <Label Content="{x:Static resx:GlobalResources.Opis}" Grid.Column="0" Grid.Row="3" Style="{StaticResource LabelStandardowy}"/>
+                    <TextBox Text="{Binding Path=OpisOdcinka}" Grid.Column="1" Grid.Row="3" Style="{StaticResource TextBoxStandardowy}" Grid.ColumnSpan="4" Grid.RowSpan="2"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Kontrahent informacje" Grid.Row="1" Style="{StaticResource GroupBoxStandardowy}">
+                <Grid>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Wybierz serial" Margin="8" Style="{StaticResource ButtonStandardowy}" Command="{Binding ShowSerialeCommand}"/>
+                            <Label Content="Tytuł serialu: " Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Width="200" Text="{Binding Path=NazwaSerialu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStandardowy}" IsEnabled="False"/>
+                            <Button Content="Wybierz sezon" Margin="8" Style="{StaticResource ButtonStandardowy}" Command="{Binding ShowSezonyCommand}"/>
+                            <Label Content="Numer sezonu: " Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Width="40" Text="{Binding Path=NumerSezonu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStandardowy}" IsEnabled="False"/>
+                            <Button Content="Wybierz projekt" Margin="8" Style="{StaticResource ButtonStandardowy}" Command="{Binding ShowProjektyCommand}"/>
+                            <Label Content="Id projektu: " Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Width="40" Text="{Binding Path=IdProjektu, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStandardowy}" IsEnabled="False"/>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Wybierz firme..."  Margin="8" Style="{StaticResource ButtonStandardowy}" Command="{Binding ShowFirmyCommand}"/>
+                            <Label Content="{x:Static resx:GlobalResources.Tworca}" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Width="400"  Text="{Binding Path=FirmaNazwa, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStandardowy}" IsEnabled="False"/>
+                            <Label Content="NIP" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Width="80" Style="{StaticResource TextBoxStandardowy}" IsEnabled="False" Text="{Binding Path=FirmaNIP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="Adres" Style="{StaticResource LabelStandardowy}"/>
+                            <TextBox Width="400" Style="{StaticResource TextBoxStandardowy}" IsEnabled="False" Text="{Binding Path=FirmaAdres, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>                        
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
+</local:OneViewBase>

@@ -1,0 +1,35 @@
+﻿<local:AllViewBase x:Class="TranslateIT.Views.WszyscyAktorzyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TranslateIT.Views"
+             xmlns:ViewModels="clr-namespace:TranslateIT.ViewModels"            
+             xmlns:resx="clr-namespace:TranslateIT.ViewResources" 
+                   d:DataContext="{d:DesignInstance Type=ViewModels:WszyscyAktorzyViewModel}"
+                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Expander Header="Aktorzy" Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="2" IsExpanded="True" Style="{StaticResource BaseExpander}">
+                <Grid>
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" SelectedItem="{Binding Path=WybranyAktor, Mode=TwoWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="IdAktora" Binding="{Binding Path=IdAktora}" Header="Id aktora"/>
+                            <DataGridTextColumn x:Name="IdPracownika" Binding="{Binding Path=IdPracownika}" Header="Id pracownika"/>
+                            <DataGridTextColumn x:Name="Imie" Binding="{Binding Path=Imie}" Header="Imie aktora"/>
+                            <DataGridTextColumn x:Name="Nazwisko" Binding="{Binding Path=Nazwisko}" Header="Nazwisko aktora"/>
+                            <DataGridTextColumn x:Name="OpisAktoraa" Binding="{Binding Path=OpisAktoraa}" Header="Opis aktora"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Expander>
+        </Grid>
+    </ScrollViewer>
+</local:AllViewBase>

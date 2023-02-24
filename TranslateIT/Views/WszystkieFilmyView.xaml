@@ -1,0 +1,55 @@
+﻿<local:AllViewBase x:Class="TranslateIT.Views.WszystkieFilmyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TranslateIT.Views"             
+             xmlns:resx="clr-namespace:TranslateIT.ViewResources" 
+                   xmlns:viewmodels="clr-namespace:TranslateIT.ViewModels" 
+                   d:DataContext="{d:DesignInstance Type=viewmodels:WszystkieFilmyViewModel}"
+                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="Gray" BorderThickness="1" Margin="2">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Filmy z okresu od:" ToolTip="Data, zatrudnienia prawcownika" Width="138" Margin="2"/>
+                    <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BaseDatePicker}"/>
+                    <Separator Width="143" Visibility="Hidden"/>
+                    <Label Content="Do okresu:" Width="135" Margin="2"/>
+                    <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BlueDatePicker}" />
+                </StackPanel>
+            </Border>
+            <Expander Header="Filmy" Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="2" IsExpanded="True" Style="{StaticResource BaseExpander}">
+                <Grid>
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" SelectedItem="{Binding Path=WybranyFilm, Mode=TwoWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="IdProjektu" Binding="{Binding Path=IdProjektu}" Header="Id projektu"/>
+                            <DataGridTextColumn x:Name="IdFilmu" Binding="{Binding Path=IdFilmu}" Header="Id filmu"/>
+                            <DataGridTextColumn x:Name="OriginalTitle" Binding="{Binding Path=OriginalTitle}" Header="Oryginalny tytuł odcinka"/>
+                            <DataGridTextColumn x:Name="TranslateTitle" Binding="{Binding Path=TranslateTitle}" Header="Tłumaczenie tytułu"/>
+                            <DataGridTextColumn x:Name="NameCode" Binding="{Binding Path=NameCode}" Header="Secret name"/>
+                            <DataGridTextColumn x:Name="Akty" Binding="{Binding Path=Akty}" Header="Akty"/>
+                            <DataGridTextColumn x:Name="Linijki" Binding="{Binding Path=Linijki}" Header="Linijki"/>
+                            <DataGridTextColumn x:Name="Postacie" Binding="{Binding Path=Postacie}" Header="Postacie"/>
+                            <DataGridTextColumn x:Name="NazwaFirmy" Binding="{Binding Path=NazwaFirmy}" Header="Nazwa firmy"/>
+                            <DataGridTextColumn x:Name="NIP" Binding="{Binding Path=NIP}" Header="NIP firmy"/>
+                            <DataGridTextColumn x:Name="KrajPochodzenia" Binding="{Binding Path=KrajPochodzenia}" Header="Kraj pochodzenia"/>
+                            <DataGridTextColumn x:Name="RokProdukcji" Binding="{Binding Path=RokProdukcji}" Header="Rok produkcji"/>
+                            <DataGridTextColumn x:Name="Deadline" Binding="{Binding Path=Deadline}" Header="Deadline"/>
+                            <DataGridTextColumn x:Name="DataPremiery" Binding="{Binding Path=DataPremiery}" Header="Data premiery"/>
+                            <DataGridTextColumn x:Name="OpisFilmu" Binding="{Binding Path=OpisFilmu}" Header="Opis filmu"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Expander>
+        </Grid>
+    </ScrollViewer>
+</local:AllViewBase>

@@ -1,0 +1,51 @@
+﻿<local:OneViewBase x:Class="TranslateIT.Views.NowyTlumaczView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+             xmlns:local="clr-namespace:TranslateIT.Views"
+             xmlns:ViewModels="clr-namespace:TranslateIT.ViewModels"
+             xmlns:resx="clr-namespace:TranslateIT.ViewResources"
+                                xmlns:viewmodels="clr-namespace:TranslateIT.ViewModels" 
+                   d:DataContext="{d:DesignInstance Type=viewmodels:NowyTlumaczViewModel}"
+                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResource.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Wybór pracownika dla tlumacza" Style="{StaticResource GroupBoxStandardowy}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Button Content="Wybierz pracownika..." Grid.Row="0" Grid.Column="0" Margin="2,2,2,2" Command="{Binding ShowPracownicyCommand}"/>
+                <Label Grid.Row="1" Content="Imie:" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Text="{Binding Path=Imie, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
+                <Label Grid.Row="1"  Content="Nazwisko" Grid.Column="2" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Text="{Binding Path=Nazwisko, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
+                <Label Content="Opis tlumacza: " Grid.Column="0" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Text="{Binding Path=OpisTlumacza, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStandardowy}"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</local:OneViewBase>

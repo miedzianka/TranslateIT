@@ -1,0 +1,53 @@
+﻿<local:AllViewBase x:Class="TranslateIT.Views.WszystkieFirmyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TranslateIT.Views" 
+                   xmlns:viewmodels="clr-namespace:TranslateIT.ViewModels" 
+                   d:DataContext="{d:DesignInstance Type=viewmodels:WszystkieFirmyViewModel}"
+                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Gray" BorderThickness="1" Margin="2">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Firmy z okresu od:" ToolTip="Data, zatrudnienia prawcownika" Width="138" Margin="2"/>
+                <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BaseDatePicker}"/>
+                <Separator Width="143" Visibility="Hidden"/>
+                <Label Content="Do okresu:" Width="135" Margin="2"/>
+                <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BlueDatePicker}" />
+            </StackPanel>
+        </Border>
+        <Expander Header="Firmy" Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="2" IsExpanded="True" Style="{StaticResource BaseExpander}">
+            <Grid>
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" SelectedItem="{Binding Path=WybranaFirma, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="IdFirma" Binding="{Binding Path=IdFirma}" Header="ID"/>
+                            <DataGridTextColumn x:Name="FirmaNazwa" Binding="{Binding Path=FirmaNazwa}" Header="Nazwa firmy"/>
+                            <DataGridTextColumn x:Name="FirmaSkroconaNazwa" Binding="{Binding Path=FirmaSkroconaNazwa}" Header="Skrocona nazwa firmy"/>
+                            <DataGridTextColumn x:Name="FirmaKodPocztowy" Binding="{Binding Path=FirmaKodPocztowy}" Header="Kod pocztowy"/>
+                            <DataGridTextColumn x:Name="FirmaKraj" Binding="{Binding Path=FirmaKraj}" Header="Kraj"/>
+                            <DataGridTextColumn x:Name="FirmaMiasto" Binding="{Binding Path=FirmaMiasto}" Header="Miasto"/>
+                            <DataGridTextColumn x:Name="FirmaNrDomu" Binding="{Binding Path=FirmaNrDomu}" Header="Numer budynku"/>
+                            <DataGridTextColumn x:Name="FirmaUlica" Binding="{Binding Path=FirmaUlica}" Header="Ulica"/>
+                            <DataGridTextColumn x:Name="FirmaREGON" Binding="{Binding Path=FirmaREGON}" Header="REGON"/>
+                            <DataGridTextColumn x:Name="FirmaNIP" Binding="{Binding Path=FirmaNIP}" Header="NIP"/>
+                            <DataGridTextColumn x:Name="FirmaFAX" Binding="{Binding Path=FirmaFAX}" Header="FAX"/>
+                            <DataGridTextColumn x:Name="StronaWWW" Binding="{Binding Path=StronaWWW}" Header="Strona internetowa"/>
+                            <DataGridTextColumn x:Name="Email" Binding="{Binding Path=Email}" Header="Email"/>
+                            <DataGridTextColumn x:Name="CzyOsobaFizyczna" Binding="{Binding Path=CzyOsobaFizyczna}" Header="Osoba fizyczna?"/>
+                        </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Expander>
+    </Grid>
+    </ScrollViewer>
+</local:AllViewBase>

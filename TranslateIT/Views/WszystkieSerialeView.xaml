@@ -1,0 +1,50 @@
+﻿<local:AllViewBase x:Class="TranslateIT.Views.WszystkieSerialeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TranslateIT.Views"             
+             xmlns:resx="clr-namespace:TranslateIT.ViewResources" 
+                   xmlns:viewmodels="clr-namespace:TranslateIT.ViewModels"
+                   d:DataContext="{d:DesignInstance Type=viewmodels:WszystkieSerialeViewModel}"
+                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </UserControl.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Gray" BorderThickness="1" Margin="2">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Seriale z okresu od:" ToolTip="Data, zatrudnienia prawcownika" Width="138" Margin="2"/>
+                <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BaseDatePicker}"/>
+                <Separator Width="143" Visibility="Hidden"/>
+                <Label Content="Do okresu:" Width="135" Margin="2"/>
+                <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BlueDatePicker}" />
+            </StackPanel>
+        </Border>
+        <Expander Header="Umowa" Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="2" IsExpanded="True" Style="{StaticResource BaseExpander}">
+            <Grid>
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" SelectedItem="{Binding Path=WybranySerial}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="IdSerialu" Binding="{Binding Path=IdSerialu}" Header="ID"/>
+                        <DataGridTextColumn x:Name="OryginalnyTytul" Binding="{Binding Path=OryginalnyTytul}" Header="Tytul oryginalny"/>
+                        <DataGridTextColumn x:Name="TytulSerialu" Binding="{Binding Path=TytulSerialu}" Header="Tlumaczenie tytulu"/>
+                        <DataGridTextColumn x:Name="IloscSezonow" Binding="{Binding Path=IloscSezonow}" Header="Ilosc sezonow"/>
+                        <DataGridTextColumn x:Name="IloscOdcinkow" Binding="{Binding Path=IloscOdcinkow}" Header="Ilosc odcinkow"/>
+                        <DataGridTextColumn x:Name="OcenaFilmweb" Binding="{Binding Path=OcenaFilmweb}" Header="Ocena Filmweb"/>
+                        <DataGridTextColumn x:Name="WWWFilmweb" Binding="{Binding Path=WWWFilmweb}" Header="Strona do Filmwebu"/>
+                        <DataGridTextColumn x:Name="DataProdukcji" Binding="{Binding Path=DataProdukcji}" Header="Data produkcji"/>
+                        <DataGridTextColumn x:Name="CzyNadalNagrywamy" Binding="{Binding Path=CzyNadalNagrywamy}" Header="Nagrywamy jeszcze?"/>
+                        <DataGridTextColumn x:Name="RokZakonczeniaProdukcji" Binding="{Binding Path=RokZakonczeniaProdukcji}" Header="Zakonczenie produkcji"/>
+                        <DataGridTextColumn x:Name="TlumaczoneDla" Binding="{Binding Path=TlumaczoneDla}" Header="Tlumaczymy dla"/>
+                        <DataGridTextColumn x:Name="KrajPochodzenia" Binding="{Binding Path=KrajPochodzenia}" Header="Kraj pochodzenia"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Expander>
+    </Grid>
+</local:AllViewBase>

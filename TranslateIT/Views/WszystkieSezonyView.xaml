@@ -1,0 +1,45 @@
+﻿<local:AllViewBase x:Class="TranslateIT.Views.WszystkieSezonyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TranslateIT.Views" 
+                   xmlns:viewmodels="clr-namespace:TranslateIT.ViewModels" 
+                   d:DataContext="{d:DesignInstance Type=viewmodels:WszystkieSezonyViewModel}"
+                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </UserControl.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Gray" BorderThickness="1" Margin="2">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Sezony z okresu od:" Width="138" Margin="2"/>
+                <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BaseDatePicker}"/>
+                <Separator Width="143" Visibility="Hidden"/>
+                <Label Content="Do okresu:" Width="135" Margin="2"/>
+                <DatePicker SelectedDate="01.01.2022" Width="100" Margin="2" Style="{StaticResource BlueDatePicker}" />
+            </StackPanel>
+        </Border>
+        <Expander Header="Sezony" Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="2" IsExpanded="True" Style="{StaticResource BaseExpander}">
+            <Grid>
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}" SelectedItem="{Binding Path=WybranySezon,Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="IdSezonu" Binding="{Binding Path=IdSezonu}" Header="ID"/>
+                        <DataGridTextColumn x:Name="NazwaSerialu" Binding="{Binding Path=NazwaSerialu}" Header="Nazwa serialu"/>
+                        <DataGridTextColumn x:Name="NumerSezonu" Binding="{Binding Path=NumerSezonu}" Header="Numer sezonu"/>
+                        <DataGridTextColumn x:Name="NazwaSezonu" Binding="{Binding Path=NazwaSezonu}" Header="Nazwa sezonu"/>
+                        <DataGridTextColumn x:Name="IloscOdcinkow" Binding="{Binding Path=IloscOdcinkow}" Header="Ilosc odcinkow"/>
+                        <DataGridTextColumn x:Name="IloscPostaci" Binding="{Binding Path=IloscPostaci}" Header="Ilosc postaci"/>
+                        <DataGridTextColumn x:Name="DataProdukcji" Binding="{Binding Path=DataProdukcji}" Header="Data produkcji"/>
+                        <DataGridTextColumn x:Name="OpisSezonu" Binding="{Binding Path=OpisSezonu}" Header="Opis sezonu"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Expander>
+    </Grid>
+</local:AllViewBase>

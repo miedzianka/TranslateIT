@@ -1,0 +1,49 @@
+﻿<local:OneViewBase x:Class="TranslateIT.Views.NowyKoordynatorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"   
+             xmlns:local="clr-namespace:TranslateIT.Views" 
+                   xmlns:viewmodels="clr-namespace:TranslateIT.ViewModels" 
+                   d:DataContext="{d:DesignInstance Type=viewmodels:NowyKoordynatorViewModel}"
+                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResource.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Wybór pracownika dla koordynatora" Style="{StaticResource GroupBoxStandardowy}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Button Content="Wybierz pracownika..." Grid.Row="0" Grid.Column="0" Margin="2,2,2,2" Command="{Binding ShowPracownicyCommand}"/>
+                <Label Grid.Row="1" Content="Imie:" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Text="{Binding Path=Imie, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
+                <Label Grid.Row="1"  Content="Nazwisko" Grid.Column="2" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Text="{Binding Path=Nazwisko, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" IsEnabled="False" Style="{StaticResource TextBoxStandardowy}"/>
+                <Label Content="Opis koordynatora: " Grid.Column="0" Grid.Row="2" Style="{StaticResource LabelStandardowy}"/>
+                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Text="{Binding Path=Opis, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStandardowy}"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</local:OneViewBase>

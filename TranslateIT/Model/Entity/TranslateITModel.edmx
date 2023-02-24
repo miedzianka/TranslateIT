@@ -1,0 +1,3225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TranslateITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adiustator">
+          <Key>
+            <PropertyRef Name="IdAdiustatora" />
+          </Key>
+          <Property Name="IdAdiustatora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="CzyAktywna" Type="bit" />
+        </EntityType>
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="IdAdresu" />
+          </Key>
+          <Property Name="IdAdresu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ulica" Type="nvarchar(max)" />
+          <Property Name="NumerDomu" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumerMieszkania" Type="nvarchar" MaxLength="50" />
+          <Property Name="KodPocztowy" Type="nvarchar" MaxLength="6" />
+          <Property Name="Miasto" Type="nvarchar(max)" />
+          <Property Name="Poczta" Type="nvarchar(max)" />
+          <Property Name="IdKraju" Type="int" />
+          <Property Name="czyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Aktorzy">
+          <Key>
+            <PropertyRef Name="IdAktora" />
+          </Key>
+          <Property Name="IdAktora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="OpisAktora" Type="nvarchar(max)" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="DaneFirmy">
+          <Key>
+            <PropertyRef Name="IdFirmy" />
+          </Key>
+          <Property Name="IdFirmy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NazwaFirmy" Type="nvarchar(max)" />
+          <Property Name="SkroconaNazwa" Type="nvarchar(max)" />
+          <Property Name="IdAdresu" Type="int" />
+          <Property Name="OpisFirmy" Type="nvarchar(max)" />
+          <Property Name="NIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="REGON" Type="nvarchar" MaxLength="50" />
+          <Property Name="FAX" Type="nvarchar" MaxLength="50" />
+          <Property Name="StronaWWW" Type="nvarchar(max)" />
+          <Property Name="Logo" Type="image" />
+          <Property Name="DataZalozenia" Type="date" />
+          <Property Name="EMail" Type="nvarchar(max)" />
+          <Property Name="OsobaFizyczna" Type="bit" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Dzwiekowiec">
+          <Key>
+            <PropertyRef Name="IdDzwiekowca" />
+          </Key>
+          <Property Name="IdDzwiekowca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="EtapyProjektu">
+          <Key>
+            <PropertyRef Name="IdEtapuProjektu" />
+          </Key>
+          <Property Name="IdEtapuProjektu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EtapProjektu" Type="nvarchar(max)" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Faktura">
+          <Key>
+            <PropertyRef Name="IdFaktury" />
+          </Key>
+          <Property Name="IdFaktury" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numer" Type="nchar" MaxLength="10" />
+          <Property Name="DataWystawienia" Type="date" />
+          <Property Name="IdFirmy" Type="int" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="TerminPlatnosci" Type="date" />
+          <Property Name="IdSposobuPlatnosci" Type="int" />
+          <Property Name="CzyZatwierdzona" Type="bit" />
+          <Property Name="CzyAktywna" Type="bit" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="IdFilmu" />
+          </Key>
+          <Property Name="IdFilmu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProjektu" Type="int" />
+          <Property Name="OryginalnyTytuł" Type="nvarchar(max)" />
+          <Property Name="TutulFilmu" Type="nvarchar(max)" />
+          <Property Name="NameCode" Type="nvarchar(max)" />
+          <Property Name="OcenaFilmuFilmweb" Type="int" />
+          <Property Name="WWWFilmweb" Type="nvarchar(max)" />
+          <Property Name="CzasTrwaniaFilmuMin" Type="nvarchar" MaxLength="50" />
+          <Property Name="Akty" Type="int" />
+          <Property Name="Linijki" Type="int" />
+          <Property Name="Postacie" Type="int" />
+          <Property Name="IdFirmy" Type="int" />
+          <Property Name="LogoFilmu" Type="image" />
+          <Property Name="IdKrajPochodzenia" Type="int" />
+          <Property Name="RokProdukcji" Type="int" />
+          <Property Name="Deadline" Type="datetime" />
+          <Property Name="DataPremiery" Type="date" />
+          <Property Name="OpisFilmu" Type="nvarchar(max)" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="HarmonogramNagran">
+          <Key>
+            <PropertyRef Name="IdHarmonogramuNagrania" />
+          </Key>
+          <Property Name="IdHarmonogramuNagrania" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNagrania" Type="int" />
+          <Property Name="IdSaliNagran" Type="int" />
+          <Property Name="DataRozpoczecia" Type="datetime" />
+          <Property Name="DataZakonczenia" Type="datetime" />
+          <Property Name="czyLektor" Type="bit" />
+          <Property Name="czyDubbing" Type="bit" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Jezyki">
+          <Key>
+            <PropertyRef Name="IdLanguage" />
+          </Key>
+          <Property Name="IdLanguage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Jezyk" Type="nvarchar(max)" />
+          <Property Name="SkrotowoJezyk" Type="nvarchar" MaxLength="10" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Koordynator">
+          <Key>
+            <PropertyRef Name="IdKoordynatora" />
+          </Key>
+          <Property Name="IdKoordynatora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="CzyAktywna" Type="bit" />
+        </EntityType>
+        <EntityType Name="Kraj">
+          <Key>
+            <PropertyRef Name="IdKraju" />
+          </Key>
+          <Property Name="IdKraju" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NazwaKraju" Type="nvarchar(max)" />
+          <Property Name="czyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Nagrania">
+          <Key>
+            <PropertyRef Name="IdNagrania" />
+          </Key>
+          <Property Name="IdNagrania" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nagranie" Type="nvarchar(max)" />
+          <Property Name="IdAktora" Type="int" />
+          <Property Name="IdRezysera" Type="int" />
+          <Property Name="IdProjektu" Type="int" />
+          <Property Name="IdPostaci" Type="int" />
+          <Property Name="IdDzwiekowca" Type="int" />
+          <Property Name="DataNagrania" Type="date" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Odcinki">
+          <Key>
+            <PropertyRef Name="IdOdcinka" />
+          </Key>
+          <Property Name="IdOdcinka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NazwaOdcinka" Type="nvarchar(max)" />
+          <Property Name="NumerOdcinka" Type="int" />
+          <Property Name="IdSezonu" Type="int" />
+          <Property Name="IdSerialu" Type="int" />
+          <Property Name="IdProjektu" Type="int" />
+          <Property Name="Deadline" Type="datetime" />
+          <Property Name="DataProdukcji" Type="date" />
+          <Property Name="Piosenki" Type="int" />
+          <Property Name="Postacie" Type="int" />
+          <Property Name="OpisOdcinka" Type="nvarchar(max)" />
+          <Property Name="IdTlumaczaPiosenek" Type="int" />
+          <Property Name="DlugoscOdcinkaMIN" Type="nvarchar" MaxLength="50" />
+          <Property Name="IloscLinijek" Type="int" />
+          <Property Name="Akty" Type="int" />
+          <Property Name="DataPrzyjecia" Type="date" />
+          <Property Name="Budzet" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Postacie">
+          <Key>
+            <PropertyRef Name="IdPostaci" />
+          </Key>
+          <Property Name="IdPostaci" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProjektu" Type="int" />
+          <Property Name="IdAktora" Type="int" />
+          <Property Name="PostacNazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Linijki" Type="int" />
+          <Property Name="Stawka" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="PozycjaFaktury">
+          <Key>
+            <PropertyRef Name="IdPozycjiFaktury" />
+          </Key>
+          <Property Name="IdPozycjiFaktury" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFaktury" Type="int" />
+          <Property Name="IdProjektu" Type="int" />
+          <Property Name="IdStawki" Type="int" />
+          <Property Name="Ilosc" Type="int" />
+          <Property Name="StawkaBrutto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="StawkaNetto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="VAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Rabat" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywna" Type="bit" />
+        </EntityType>
+        <EntityType Name="PozycjaUmowy">
+          <Key>
+            <PropertyRef Name="IdStatusuUmowy" />
+          </Key>
+          <Property Name="IdStatusuUmowy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUmowy" Type="int" />
+          <Property Name="IdProjektu" Type="int" />
+          <Property Name="IdStawki" Type="int" />
+          <Property Name="Ilosc" Type="int" />
+          <Property Name="VAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="StawkaBrutto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="StawkaNetto" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Zaliczka" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OpisWspolpracy" Type="nvarchar(max)" />
+          <Property Name="CzyAktywna" Type="bit" />
+        </EntityType>
+        <EntityType Name="Pracownik">
+          <Key>
+            <PropertyRef Name="IdPracownika" />
+          </Key>
+          <Property Name="IdPracownika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar(max)" />
+          <Property Name="DrugieImie" Type="nvarchar(max)" />
+          <Property Name="Nazwisko/a" Type="nvarchar(max)" />
+          <Property Name="DataUrodzenia" Type="date" />
+          <Property Name="Pesel" Type="nvarchar" MaxLength="11" />
+          <Property Name="NIP" Type="nvarchar" MaxLength="12" />
+          <Property Name="nrKonta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bank" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ubezpieczenie" Type="nvarchar(max)" />
+          <Property Name="nrDowodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="nrPaszportu" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusStudenta" Type="bit" />
+          <Property Name="ImieMamy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImieOjca" Type="nvarchar" MaxLength="50" />
+          <Property Name="OsobaKontaktowa" Type="nvarchar(max)" />
+          <Property Name="E-mail" Type="nvarchar(max)" />
+          <Property Name="NrTelefonu1" Type="nvarchar" MaxLength="20" />
+          <Property Name="NrTelefonu2" Type="nvarchar" MaxLength="20" />
+          <Property Name="IdAdresu" Type="int" />
+          <Property Name="REGON" Type="nvarchar" MaxLength="50" />
+          <Property Name="RodzajZatrudnienia" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataNawiazaniaWspolpracy" Type="date" />
+          <Property Name="IdFirmy" Type="int" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Projekt">
+          <Key>
+            <PropertyRef Name="IdProjektu" />
+          </Key>
+          <Property Name="IdProjektu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFirma" Type="int" />
+          <Property Name="IdKoordynatoraLektor" Type="int" />
+          <Property Name="IdKoordynatoraDubbing" Type="int" />
+          <Property Name="IdKoordynatoraNapisy" Type="int" />
+          <Property Name="IdTlumaczaNapisy" Type="int" />
+          <Property Name="IdTlumaczaDubbing" Type="int" />
+          <Property Name="IdTlumaczaLektor" Type="int" />
+          <Property Name="IdEtapuProjektu" Type="int" />
+          <Property Name="CzyLektor" Type="bit" />
+          <Property Name="CzyNapisy" Type="bit" />
+          <Property Name="CzyDubbing" Type="bit" />
+          <Property Name="IdJezykaOryginalnego" Type="int" />
+          <Property Name="IdJezykaTlumaczenia" Type="int" />
+          <Property Name="Budzet" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Rezyserzy">
+          <Key>
+            <PropertyRef Name="IdRezysera" />
+          </Key>
+          <Property Name="IdRezysera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="OpisRezysera" Type="nvarchar(max)" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="RodzajUmowy">
+          <Key>
+            <PropertyRef Name="IdRodzajuUmowy" />
+          </Key>
+          <Property Name="IdRodzajuUmowy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="SalaNagraniowa">
+          <Key>
+            <PropertyRef Name="IdSaliNagraniowej" />
+          </Key>
+          <Property Name="IdSaliNagraniowej" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumerSaliNagraniowej" Type="int" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Serial">
+          <Key>
+            <PropertyRef Name="IdSerialu" />
+          </Key>
+          <Property Name="IdSerialu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OryginalnyTytul" Type="nvarchar(max)" />
+          <Property Name="LogoSerialu" Type="image" />
+          <Property Name="TytułSerialuTlumaczenie" Type="nvarchar(max)" />
+          <Property Name="NameCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="IloscSezonow" Type="int" />
+          <Property Name="IloscOdcinkow" Type="int" />
+          <Property Name="OcenaFilmweb" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="WWWDoFilmweb" Type="nvarchar(max)" />
+          <Property Name="TlumaczoneOd" Type="date" />
+          <Property Name="DataProdukcji" Type="date" />
+          <Property Name="CzyNadalNagrywany" Type="bit" />
+          <Property Name="RokZakonczeniaProdukcji" Type="date" />
+          <Property Name="TlumaczoneDla" Type="nvarchar(max)" />
+          <Property Name="IdKrajProdukcji" Type="int" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Sezony">
+          <Key>
+            <PropertyRef Name="IdSezonu" />
+          </Key>
+          <Property Name="IdSezonu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSerialu" Type="int" />
+          <Property Name="NumerSezonu" Type="int" />
+          <Property Name="NazwaSezonu" Type="nvarchar(max)" />
+          <Property Name="IloscOdcinkow" Type="int" />
+          <Property Name="OpisSezonu" Type="nvarchar(max)" />
+          <Property Name="OcenaSezonuFilmweb" Type="int" />
+          <Property Name="OcenaSezonuIMDB" Type="int" />
+          <Property Name="WWWIMDB" Type="nvarchar(max)" />
+          <Property Name="WWWFilmweb" Type="nvarchar(max)" />
+          <Property Name="IloscPostaci" Type="int" />
+          <Property Name="IloscPiosenek" Type="int" />
+          <Property Name="DataProdukcji" Type="date" />
+          <Property Name="PremieraWPolsce" Type="date" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="SposobPlatnosci">
+          <Key>
+            <PropertyRef Name="IdSposobuPlatnosci" />
+          </Key>
+          <Property Name="IdSposobuPlatnosci" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="CzyAktywna" Type="bit" />
+        </EntityType>
+        <EntityType Name="Stawki">
+          <Key>
+            <PropertyRef Name="IdStawki" />
+          </Key>
+          <Property Name="IdStawki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RodzajStawki" Type="nvarchar(max)" />
+          <Property Name="Stawka" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tlumacze">
+          <Key>
+            <PropertyRef Name="IdTlumacza" />
+          </Key>
+          <Property Name="IdTlumacza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="OpisTlumacza" Type="nvarchar(max)" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Trailer">
+          <Key>
+            <PropertyRef Name="IdTrailera" />
+          </Key>
+          <Property Name="IdTrailera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProjektu" Type="int" />
+          <Property Name="OryginalnaNazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="NazwaTrailera" Type="nvarchar(max)" />
+          <Property Name="DlugoscTrailera" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deadline" Type="datetime" />
+          <Property Name="CzyAktywne" Type="bit" />
+        </EntityType>
+        <EntityType Name="Umowa">
+          <Key>
+            <PropertyRef Name="IdUmowy" />
+          </Key>
+          <Property Name="IdUmowy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numer" Type="nchar" MaxLength="10" />
+          <Property Name="DataWystawienia" Type="date" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="IdFirmy" Type="int" />
+          <Property Name="TerminPlatnosci" Type="date" />
+          <Property Name="CzyZatwierdzona" Type="bit" />
+          <Property Name="IdRodzajuUmowy" Type="int" />
+          <Property Name="IdSposobuPlatnosci" Type="int" />
+          <Property Name="OpisWspolpracy" Type="nvarchar(max)" />
+          <Property Name="CzyAktywna" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Adiustator_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Adiustator" Type="Self.Adiustator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Adiustator">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_Kraj">
+          <End Role="Kraj" Type="Self.Kraj" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraj">
+              <PropertyRef Name="IdKraju" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="IdKraju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aktorzy_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Aktorzy" Type="Self.Aktorzy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Aktorzy">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DaneFirmy_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="DaneFirmy">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dzwiekowiec_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Dzwiekowiec" Type="Self.Dzwiekowiec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Dzwiekowiec">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktura_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Faktura">
+              <PropertyRef Name="IdFirmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktura_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Faktura">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktura_SposobPlatnosci">
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SposobPlatnosci">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Principal>
+            <Dependent Role="Faktura">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="IdFirmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Kraj">
+          <End Role="Kraj" Type="Self.Kraj" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraj">
+              <PropertyRef Name="IdKraju" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="IdKrajPochodzenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HarmonogramNagran_Nagrania">
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="0..1" />
+          <End Role="HarmonogramNagran" Type="Self.HarmonogramNagran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nagrania">
+              <PropertyRef Name="IdNagrania" />
+            </Principal>
+            <Dependent Role="HarmonogramNagran">
+              <PropertyRef Name="IdNagrania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HarmonogramNagran_SalaNagraniowa">
+          <End Role="SalaNagraniowa" Type="Self.SalaNagraniowa" Multiplicity="0..1" />
+          <End Role="HarmonogramNagran" Type="Self.HarmonogramNagran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaNagraniowa">
+              <PropertyRef Name="IdSaliNagraniowej" />
+            </Principal>
+            <Dependent Role="HarmonogramNagran">
+              <PropertyRef Name="IdSaliNagran" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Koordynator_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Koordynator" Type="Self.Koordynator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Koordynator">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Aktorzy">
+          <End Role="Aktorzy" Type="Self.Aktorzy" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aktorzy">
+              <PropertyRef Name="IdAktora" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdAktora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Dzwiekowiec">
+          <End Role="Dzwiekowiec" Type="Self.Dzwiekowiec" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dzwiekowiec">
+              <PropertyRef Name="IdDzwiekowca" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdDzwiekowca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Postacie">
+          <End Role="Postacie" Type="Self.Postacie" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postacie">
+              <PropertyRef Name="IdPostaci" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdPostaci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Rezyserzy">
+          <End Role="Rezyserzy" Type="Self.Rezyserzy" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezyserzy">
+              <PropertyRef Name="IdRezysera" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdRezysera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odcinki_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="Odcinki" Type="Self.Odcinki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Odcinki">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odcinki_Serial">
+          <End Role="Serial" Type="Self.Serial" Multiplicity="0..1" />
+          <End Role="Odcinki" Type="Self.Odcinki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serial">
+              <PropertyRef Name="IdSerialu" />
+            </Principal>
+            <Dependent Role="Odcinki">
+              <PropertyRef Name="IdSerialu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odcinki_Sezony">
+          <End Role="Sezony" Type="Self.Sezony" Multiplicity="0..1" />
+          <End Role="Odcinki" Type="Self.Odcinki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sezony">
+              <PropertyRef Name="IdSezonu" />
+            </Principal>
+            <Dependent Role="Odcinki">
+              <PropertyRef Name="IdSezonu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odcinki_Tlumacze">
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="0..1" />
+          <End Role="Odcinki" Type="Self.Odcinki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tlumacze">
+              <PropertyRef Name="IdTlumacza" />
+            </Principal>
+            <Dependent Role="Odcinki">
+              <PropertyRef Name="IdTlumaczaPiosenek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postacie_Aktorzy">
+          <End Role="Aktorzy" Type="Self.Aktorzy" Multiplicity="0..1" />
+          <End Role="Postacie" Type="Self.Postacie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aktorzy">
+              <PropertyRef Name="IdAktora" />
+            </Principal>
+            <Dependent Role="Postacie">
+              <PropertyRef Name="IdAktora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postacie_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="Postacie" Type="Self.Postacie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Postacie">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaFaktury_Faktura">
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="0..1" />
+          <End Role="PozycjaFaktury" Type="Self.PozycjaFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faktura">
+              <PropertyRef Name="IdFaktury" />
+            </Principal>
+            <Dependent Role="PozycjaFaktury">
+              <PropertyRef Name="IdFaktury" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaFaktury_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="PozycjaFaktury" Type="Self.PozycjaFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="PozycjaFaktury">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaFaktury_Stawki">
+          <End Role="Stawki" Type="Self.Stawki" Multiplicity="0..1" />
+          <End Role="PozycjaFaktury" Type="Self.PozycjaFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stawki">
+              <PropertyRef Name="IdStawki" />
+            </Principal>
+            <Dependent Role="PozycjaFaktury">
+              <PropertyRef Name="IdStawki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaUmowy_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="PozycjaUmowy" Type="Self.PozycjaUmowy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="PozycjaUmowy">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaUmowy_Stawki">
+          <End Role="Stawki" Type="Self.Stawki" Multiplicity="0..1" />
+          <End Role="PozycjaUmowy" Type="Self.PozycjaUmowy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stawki">
+              <PropertyRef Name="IdStawki" />
+            </Principal>
+            <Dependent Role="PozycjaUmowy">
+              <PropertyRef Name="IdStawki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaUmowy_Umowa">
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="0..1" />
+          <End Role="PozycjaUmowy" Type="Self.PozycjaUmowy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Umowa">
+              <PropertyRef Name="IdUmowy" />
+            </Principal>
+            <Dependent Role="PozycjaUmowy">
+              <PropertyRef Name="IdUmowy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pracownik_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pracownik_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="IdFirmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdFirma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_EtapyProjektu">
+          <End Role="EtapyProjektu" Type="Self.EtapyProjektu" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EtapyProjektu">
+              <PropertyRef Name="IdEtapuProjektu" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdEtapuProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Jezyki">
+          <End Role="Jezyki" Type="Self.Jezyki" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jezyki">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdJezykaOryginalnego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Jezyki1">
+          <End Role="Jezyki" Type="Self.Jezyki" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jezyki">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdJezykaTlumaczenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Koordynator">
+          <End Role="Koordynator" Type="Self.Koordynator" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Koordynator">
+              <PropertyRef Name="IdKoordynatora" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdKoordynatoraDubbing" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Koordynator1">
+          <End Role="Koordynator" Type="Self.Koordynator" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Koordynator">
+              <PropertyRef Name="IdKoordynatora" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdKoordynatoraLektor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Koordynator2">
+          <End Role="Koordynator" Type="Self.Koordynator" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Koordynator">
+              <PropertyRef Name="IdKoordynatora" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdKoordynatoraNapisy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Tlumacze">
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tlumacze">
+              <PropertyRef Name="IdTlumacza" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdTlumaczaDubbing" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Tlumacze1">
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tlumacze">
+              <PropertyRef Name="IdTlumacza" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdTlumaczaLektor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Tlumacze2">
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tlumacze">
+              <PropertyRef Name="IdTlumacza" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdTlumaczaNapisy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezyserzy_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Rezyserzy" Type="Self.Rezyserzy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Rezyserzy">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Serial_Kraj">
+          <End Role="Kraj" Type="Self.Kraj" Multiplicity="0..1" />
+          <End Role="Serial" Type="Self.Serial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraj">
+              <PropertyRef Name="IdKraju" />
+            </Principal>
+            <Dependent Role="Serial">
+              <PropertyRef Name="IdKrajProdukcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sezony_Serial">
+          <End Role="Serial" Type="Self.Serial" Multiplicity="0..1" />
+          <End Role="Sezony" Type="Self.Sezony" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serial">
+              <PropertyRef Name="IdSerialu" />
+            </Principal>
+            <Dependent Role="Sezony">
+              <PropertyRef Name="IdSerialu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tlumacze_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Tlumacze">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trailer_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="Trailer" Type="Self.Trailer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Trailer">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Umowa_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Umowa">
+              <PropertyRef Name="IdFirmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Umowa_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Umowa">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Umowa_RodzajUmowy">
+          <End Role="RodzajUmowy" Type="Self.RodzajUmowy" Multiplicity="0..1" />
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajUmowy">
+              <PropertyRef Name="IdRodzajuUmowy" />
+            </Principal>
+            <Dependent Role="Umowa">
+              <PropertyRef Name="IdRodzajuUmowy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Umowa_SposobPlatnosci">
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SposobPlatnosci">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Principal>
+            <Dependent Role="Umowa">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="TranslateITModelStoreContainer">
+          <EntitySet Name="Adiustator" EntityType="Self.Adiustator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aktorzy" EntityType="Self.Aktorzy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DaneFirmy" EntityType="Self.DaneFirmy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dzwiekowiec" EntityType="Self.Dzwiekowiec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EtapyProjektu" EntityType="Self.EtapyProjektu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faktura" EntityType="Self.Faktura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HarmonogramNagran" EntityType="Self.HarmonogramNagran" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jezyki" EntityType="Self.Jezyki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Koordynator" EntityType="Self.Koordynator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kraj" EntityType="Self.Kraj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nagrania" EntityType="Self.Nagrania" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Odcinki" EntityType="Self.Odcinki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postacie" EntityType="Self.Postacie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PozycjaFaktury" EntityType="Self.PozycjaFaktury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PozycjaUmowy" EntityType="Self.PozycjaUmowy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pracownik" EntityType="Self.Pracownik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projekt" EntityType="Self.Projekt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezyserzy" EntityType="Self.Rezyserzy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodzajUmowy" EntityType="Self.RodzajUmowy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaNagraniowa" EntityType="Self.SalaNagraniowa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Serial" EntityType="Self.Serial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sezony" EntityType="Self.Sezony" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SposobPlatnosci" EntityType="Self.SposobPlatnosci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stawki" EntityType="Self.Stawki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tlumacze" EntityType="Self.Tlumacze" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trailer" EntityType="Self.Trailer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Umowa" EntityType="Self.Umowa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Adiustator_Pracownik" Association="Self.FK_Adiustator_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Adiustator" EntitySet="Adiustator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_Kraj" Association="Self.FK_Adres_Kraj">
+            <End Role="Kraj" EntitySet="Kraj" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aktorzy_Pracownik" Association="Self.FK_Aktorzy_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Aktorzy" EntitySet="Aktorzy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DaneFirmy_Adres" Association="Self.FK_DaneFirmy_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dzwiekowiec_Pracownik" Association="Self.FK_Dzwiekowiec_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Dzwiekowiec" EntitySet="Dzwiekowiec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktura_DaneFirmy" Association="Self.FK_Faktura_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Faktura" EntitySet="Faktura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktura_Pracownik" Association="Self.FK_Faktura_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Faktura" EntitySet="Faktura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktura_SposobPlatnosci" Association="Self.FK_Faktura_SposobPlatnosci">
+            <End Role="SposobPlatnosci" EntitySet="SposobPlatnosci" />
+            <End Role="Faktura" EntitySet="Faktura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_DaneFirmy" Association="Self.FK_Film_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Kraj" Association="Self.FK_Film_Kraj">
+            <End Role="Kraj" EntitySet="Kraj" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Projekt" Association="Self.FK_Film_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HarmonogramNagran_Nagrania" Association="Self.FK_HarmonogramNagran_Nagrania">
+            <End Role="Nagrania" EntitySet="Nagrania" />
+            <End Role="HarmonogramNagran" EntitySet="HarmonogramNagran" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HarmonogramNagran_SalaNagraniowa" Association="Self.FK_HarmonogramNagran_SalaNagraniowa">
+            <End Role="SalaNagraniowa" EntitySet="SalaNagraniowa" />
+            <End Role="HarmonogramNagran" EntitySet="HarmonogramNagran" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Koordynator_Pracownik" Association="Self.FK_Koordynator_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Koordynator" EntitySet="Koordynator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Aktorzy" Association="Self.FK_Nagrania_Aktorzy">
+            <End Role="Aktorzy" EntitySet="Aktorzy" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Dzwiekowiec" Association="Self.FK_Nagrania_Dzwiekowiec">
+            <End Role="Dzwiekowiec" EntitySet="Dzwiekowiec" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Postacie" Association="Self.FK_Nagrania_Postacie">
+            <End Role="Postacie" EntitySet="Postacie" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Projekt" Association="Self.FK_Nagrania_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Rezyserzy" Association="Self.FK_Nagrania_Rezyserzy">
+            <End Role="Rezyserzy" EntitySet="Rezyserzy" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odcinki_Projekt" Association="Self.FK_Odcinki_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Odcinki" EntitySet="Odcinki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odcinki_Serial" Association="Self.FK_Odcinki_Serial">
+            <End Role="Serial" EntitySet="Serial" />
+            <End Role="Odcinki" EntitySet="Odcinki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odcinki_Sezony" Association="Self.FK_Odcinki_Sezony">
+            <End Role="Sezony" EntitySet="Sezony" />
+            <End Role="Odcinki" EntitySet="Odcinki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odcinki_Tlumacze" Association="Self.FK_Odcinki_Tlumacze">
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+            <End Role="Odcinki" EntitySet="Odcinki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postacie_Aktorzy" Association="Self.FK_Postacie_Aktorzy">
+            <End Role="Aktorzy" EntitySet="Aktorzy" />
+            <End Role="Postacie" EntitySet="Postacie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postacie_Projekt" Association="Self.FK_Postacie_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Postacie" EntitySet="Postacie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaFaktury_Faktura" Association="Self.FK_PozycjaFaktury_Faktura">
+            <End Role="Faktura" EntitySet="Faktura" />
+            <End Role="PozycjaFaktury" EntitySet="PozycjaFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaFaktury_Projekt" Association="Self.FK_PozycjaFaktury_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="PozycjaFaktury" EntitySet="PozycjaFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaFaktury_Stawki" Association="Self.FK_PozycjaFaktury_Stawki">
+            <End Role="Stawki" EntitySet="Stawki" />
+            <End Role="PozycjaFaktury" EntitySet="PozycjaFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaUmowy_Projekt" Association="Self.FK_PozycjaUmowy_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="PozycjaUmowy" EntitySet="PozycjaUmowy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaUmowy_Stawki" Association="Self.FK_PozycjaUmowy_Stawki">
+            <End Role="Stawki" EntitySet="Stawki" />
+            <End Role="PozycjaUmowy" EntitySet="PozycjaUmowy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaUmowy_Umowa" Association="Self.FK_PozycjaUmowy_Umowa">
+            <End Role="Umowa" EntitySet="Umowa" />
+            <End Role="PozycjaUmowy" EntitySet="PozycjaUmowy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pracownik_Adres" Association="Self.FK_Pracownik_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pracownik_DaneFirmy" Association="Self.FK_Pracownik_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_DaneFirmy" Association="Self.FK_Projekt_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_EtapyProjektu" Association="Self.FK_Projekt_EtapyProjektu">
+            <End Role="EtapyProjektu" EntitySet="EtapyProjektu" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Jezyki" Association="Self.FK_Projekt_Jezyki">
+            <End Role="Jezyki" EntitySet="Jezyki" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Jezyki1" Association="Self.FK_Projekt_Jezyki1">
+            <End Role="Jezyki" EntitySet="Jezyki" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Koordynator" Association="Self.FK_Projekt_Koordynator">
+            <End Role="Koordynator" EntitySet="Koordynator" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Koordynator1" Association="Self.FK_Projekt_Koordynator1">
+            <End Role="Koordynator" EntitySet="Koordynator" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Koordynator2" Association="Self.FK_Projekt_Koordynator2">
+            <End Role="Koordynator" EntitySet="Koordynator" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Tlumacze" Association="Self.FK_Projekt_Tlumacze">
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Tlumacze1" Association="Self.FK_Projekt_Tlumacze1">
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Tlumacze2" Association="Self.FK_Projekt_Tlumacze2">
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezyserzy_Pracownik" Association="Self.FK_Rezyserzy_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Rezyserzy" EntitySet="Rezyserzy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Serial_Kraj" Association="Self.FK_Serial_Kraj">
+            <End Role="Kraj" EntitySet="Kraj" />
+            <End Role="Serial" EntitySet="Serial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sezony_Serial" Association="Self.FK_Sezony_Serial">
+            <End Role="Serial" EntitySet="Serial" />
+            <End Role="Sezony" EntitySet="Sezony" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tlumacze_Pracownik" Association="Self.FK_Tlumacze_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trailer_Projekt" Association="Self.FK_Trailer_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Trailer" EntitySet="Trailer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Umowa_DaneFirmy" Association="Self.FK_Umowa_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Umowa" EntitySet="Umowa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Umowa_Pracownik" Association="Self.FK_Umowa_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Umowa" EntitySet="Umowa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Umowa_RodzajUmowy" Association="Self.FK_Umowa_RodzajUmowy">
+            <End Role="RodzajUmowy" EntitySet="RodzajUmowy" />
+            <End Role="Umowa" EntitySet="Umowa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Umowa_SposobPlatnosci" Association="Self.FK_Umowa_SposobPlatnosci">
+            <End Role="SposobPlatnosci" EntitySet="SposobPlatnosci" />
+            <End Role="Umowa" EntitySet="Umowa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TranslateITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adiustator">
+          <Key>
+            <PropertyRef Name="IdAdiustatora" />
+          </Key>
+          <Property Name="IdAdiustatora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywna" Type="Boolean" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Adiustator_Pracownik" FromRole="Adiustator" ToRole="Pracownik" />
+        </EntityType>
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="IdAdresu" />
+          </Key>
+          <Property Name="IdAdresu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ulica" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NumerDomu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumerMieszkania" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Miasto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Poczta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdKraju" Type="Int32" />
+          <Property Name="czyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Kraj" Relationship="Self.FK_Adres_Kraj" FromRole="Adres" ToRole="Kraj" />
+          <NavigationProperty Name="DaneFirmy" Relationship="Self.FK_DaneFirmy_Adres" FromRole="Adres" ToRole="DaneFirmy" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Pracownik_Adres" FromRole="Adres" ToRole="Pracownik" />
+        </EntityType>
+        <EntityType Name="Aktorzy">
+          <Key>
+            <PropertyRef Name="IdAktora" />
+          </Key>
+          <Property Name="IdAktora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="OpisAktora" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Aktorzy_Pracownik" FromRole="Aktorzy" ToRole="Pracownik" />
+          <NavigationProperty Name="Nagrania" Relationship="Self.FK_Nagrania_Aktorzy" FromRole="Aktorzy" ToRole="Nagrania" />
+          <NavigationProperty Name="Postacie" Relationship="Self.FK_Postacie_Aktorzy" FromRole="Aktorzy" ToRole="Postacie" />
+        </EntityType>
+        <EntityType Name="DaneFirmy">
+          <Key>
+            <PropertyRef Name="IdFirmy" />
+          </Key>
+          <Property Name="IdFirmy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaFirmy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SkroconaNazwa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdAdresu" Type="Int32" />
+          <Property Name="OpisFirmy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="REGON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FAX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StronaWWW" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DataZalozenia" Type="DateTime" Precision="0" />
+          <Property Name="EMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OsobaFizyczna" Type="Boolean" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_DaneFirmy_Adres" FromRole="DaneFirmy" ToRole="Adres" />
+          <NavigationProperty Name="Faktura" Relationship="Self.FK_Faktura_DaneFirmy" FromRole="DaneFirmy" ToRole="Faktura" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Film_DaneFirmy" FromRole="DaneFirmy" ToRole="Film" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Pracownik_DaneFirmy" FromRole="DaneFirmy" ToRole="Pracownik" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Projekt_DaneFirmy" FromRole="DaneFirmy" ToRole="Projekt" />
+          <NavigationProperty Name="Umowa" Relationship="Self.FK_Umowa_DaneFirmy" FromRole="DaneFirmy" ToRole="Umowa" />
+        </EntityType>
+        <EntityType Name="Dzwiekowiec">
+          <Key>
+            <PropertyRef Name="IdDzwiekowca" />
+          </Key>
+          <Property Name="IdDzwiekowca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Dzwiekowiec_Pracownik" FromRole="Dzwiekowiec" ToRole="Pracownik" />
+          <NavigationProperty Name="Nagrania" Relationship="Self.FK_Nagrania_Dzwiekowiec" FromRole="Dzwiekowiec" ToRole="Nagrania" />
+        </EntityType>
+        <EntityType Name="EtapyProjektu">
+          <Key>
+            <PropertyRef Name="IdEtapuProjektu" />
+          </Key>
+          <Property Name="IdEtapuProjektu" Type="Int32" Nullable="false" />
+          <Property Name="EtapProjektu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Projekt_EtapyProjektu" FromRole="EtapyProjektu" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="Faktura">
+          <Key>
+            <PropertyRef Name="IdFaktury" />
+          </Key>
+          <Property Name="IdFaktury" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numer" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DataWystawienia" Type="DateTime" Precision="0" />
+          <Property Name="IdFirmy" Type="Int32" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="TerminPlatnosci" Type="DateTime" Precision="0" />
+          <Property Name="IdSposobuPlatnosci" Type="Int32" />
+          <Property Name="CzyZatwierdzona" Type="Boolean" />
+          <Property Name="CzyAktywna" Type="Boolean" />
+          <NavigationProperty Name="DaneFirmy" Relationship="Self.FK_Faktura_DaneFirmy" FromRole="Faktura" ToRole="DaneFirmy" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Faktura_Pracownik" FromRole="Faktura" ToRole="Pracownik" />
+          <NavigationProperty Name="SposobPlatnosci" Relationship="Self.FK_Faktura_SposobPlatnosci" FromRole="Faktura" ToRole="SposobPlatnosci" />
+          <NavigationProperty Name="PozycjaFaktury" Relationship="Self.FK_PozycjaFaktury_Faktura" FromRole="Faktura" ToRole="PozycjaFaktury" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="IdFilmu" />
+          </Key>
+          <Property Name="IdFilmu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProjektu" Type="Int32" />
+          <Property Name="OryginalnyTytuł" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TutulFilmu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OcenaFilmuFilmweb" Type="Int32" />
+          <Property Name="WWWFilmweb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzasTrwaniaFilmuMin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Akty" Type="Int32" />
+          <Property Name="Linijki" Type="Int32" />
+          <Property Name="Postacie" Type="Int32" />
+          <Property Name="IdFirmy" Type="Int32" />
+          <Property Name="LogoFilmu" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IdKrajPochodzenia" Type="Int32" />
+          <Property Name="RokProdukcji" Type="Int32" />
+          <Property Name="Deadline" Type="DateTime" Precision="3" />
+          <Property Name="DataPremiery" Type="DateTime" Precision="0" />
+          <Property Name="OpisFilmu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="DaneFirmy" Relationship="Self.FK_Film_DaneFirmy" FromRole="Film" ToRole="DaneFirmy" />
+          <NavigationProperty Name="Kraj" Relationship="Self.FK_Film_Kraj" FromRole="Film" ToRole="Kraj" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Film_Projekt" FromRole="Film" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="HarmonogramNagran">
+          <Key>
+            <PropertyRef Name="IdHarmonogramuNagrania" />
+          </Key>
+          <Property Name="IdHarmonogramuNagrania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNagrania" Type="Int32" />
+          <Property Name="IdSaliNagran" Type="Int32" />
+          <Property Name="DataRozpoczecia" Type="DateTime" Precision="3" />
+          <Property Name="DataZakonczenia" Type="DateTime" Precision="3" />
+          <Property Name="czyLektor" Type="Boolean" />
+          <Property Name="czyDubbing" Type="Boolean" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Nagrania" Relationship="Self.FK_HarmonogramNagran_Nagrania" FromRole="HarmonogramNagran" ToRole="Nagrania" />
+          <NavigationProperty Name="SalaNagraniowa" Relationship="Self.FK_HarmonogramNagran_SalaNagraniowa" FromRole="HarmonogramNagran" ToRole="SalaNagraniowa" />
+        </EntityType>
+        <EntityType Name="Jezyki">
+          <Key>
+            <PropertyRef Name="IdLanguage" />
+          </Key>
+          <Property Name="IdLanguage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Jezyk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SkrotowoJezyk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Projekt_Jezyki" FromRole="Jezyki" ToRole="Projekt" />
+          <NavigationProperty Name="Projekt1" Relationship="Self.FK_Projekt_Jezyki1" FromRole="Jezyki" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="Koordynator">
+          <Key>
+            <PropertyRef Name="IdKoordynatora" />
+          </Key>
+          <Property Name="IdKoordynatora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywna" Type="Boolean" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Projekt_Koordynator" FromRole="Koordynator" ToRole="Projekt" />
+          <NavigationProperty Name="Projekt1" Relationship="Self.FK_Projekt_Koordynator1" FromRole="Koordynator" ToRole="Projekt" />
+          <NavigationProperty Name="Projekt2" Relationship="Self.FK_Projekt_Koordynator2" FromRole="Koordynator" ToRole="Projekt" />
+          <NavigationProperty Name="Pracownik" Relationship="TranslateITModel.FK_Koordynator_Pracownik" FromRole="Koordynator" ToRole="Pracownik" />
+        </EntityType>
+        <EntityType Name="Kraj">
+          <Key>
+            <PropertyRef Name="IdKraju" />
+          </Key>
+          <Property Name="IdKraju" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaKraju" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="czyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Adres_Kraj" FromRole="Kraj" ToRole="Adres" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Film_Kraj" FromRole="Kraj" ToRole="Film" />
+          <NavigationProperty Name="Serial" Relationship="Self.FK_Serial_Kraj" FromRole="Kraj" ToRole="Serial" />
+        </EntityType>
+        <EntityType Name="Nagrania">
+          <Key>
+            <PropertyRef Name="IdNagrania" />
+          </Key>
+          <Property Name="IdNagrania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nagranie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdAktora" Type="Int32" />
+          <Property Name="IdRezysera" Type="Int32" />
+          <Property Name="IdProjektu" Type="Int32" />
+          <Property Name="IdPostaci" Type="Int32" />
+          <Property Name="IdDzwiekowca" Type="Int32" />
+          <Property Name="DataNagrania" Type="DateTime" Precision="0" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Aktorzy" Relationship="Self.FK_Nagrania_Aktorzy" FromRole="Nagrania" ToRole="Aktorzy" />
+          <NavigationProperty Name="Dzwiekowiec" Relationship="Self.FK_Nagrania_Dzwiekowiec" FromRole="Nagrania" ToRole="Dzwiekowiec" />
+          <NavigationProperty Name="HarmonogramNagran" Relationship="Self.FK_HarmonogramNagran_Nagrania" FromRole="Nagrania" ToRole="HarmonogramNagran" />
+          <NavigationProperty Name="Postacie" Relationship="Self.FK_Nagrania_Postacie" FromRole="Nagrania" ToRole="Postacie" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Nagrania_Projekt" FromRole="Nagrania" ToRole="Projekt" />
+          <NavigationProperty Name="Rezyserzy" Relationship="Self.FK_Nagrania_Rezyserzy" FromRole="Nagrania" ToRole="Rezyserzy" />
+        </EntityType>
+        <EntityType Name="Odcinki">
+          <Key>
+            <PropertyRef Name="IdOdcinka" />
+          </Key>
+          <Property Name="IdOdcinka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaOdcinka" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NumerOdcinka" Type="Int32" />
+          <Property Name="IdSezonu" Type="Int32" />
+          <Property Name="IdSerialu" Type="Int32" />
+          <Property Name="Deadline" Type="DateTime" Precision="3" />
+          <Property Name="DataProdukcji" Type="DateTime" Precision="0" />
+          <Property Name="Piosenki" Type="Int32" />
+          <Property Name="Postacie" Type="Int32" />
+          <Property Name="OpisOdcinka" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdTlumaczaPiosenek" Type="Int32" />
+          <Property Name="DlugoscOdcinkaMIN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IloscLinijek" Type="Int32" />
+          <Property Name="Akty" Type="Int32" />
+          <Property Name="DataPrzyjecia" Type="DateTime" Precision="0" />
+          <Property Name="Budzet" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Serial" Relationship="Self.FK_Odcinki_Serial" FromRole="Odcinki" ToRole="Serial" />
+          <NavigationProperty Name="Sezony" Relationship="Self.FK_Odcinki_Sezony" FromRole="Odcinki" ToRole="Sezony" />
+          <NavigationProperty Name="Tlumacze" Relationship="Self.FK_Odcinki_Tlumacze" FromRole="Odcinki" ToRole="Tlumacze" />
+          <Property Name="IdProjektu" Type="Int32" />
+          <NavigationProperty Name="Projekt" Relationship="TranslateITModel.FK_Odcinki_Projekt" FromRole="Odcinki" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="Postacie">
+          <Key>
+            <PropertyRef Name="IdPostaci" />
+          </Key>
+          <Property Name="IdPostaci" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProjektu" Type="Int32" />
+          <Property Name="IdAktora" Type="Int32" />
+          <Property Name="PostacNazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Linijki" Type="Int32" />
+          <Property Name="Stawka" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Aktorzy" Relationship="Self.FK_Postacie_Aktorzy" FromRole="Postacie" ToRole="Aktorzy" />
+          <NavigationProperty Name="Nagrania" Relationship="Self.FK_Nagrania_Postacie" FromRole="Postacie" ToRole="Nagrania" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Postacie_Projekt" FromRole="Postacie" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="PozycjaFaktury">
+          <Key>
+            <PropertyRef Name="IdPozycjiFaktury" />
+          </Key>
+          <Property Name="IdPozycjiFaktury" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFaktury" Type="Int32" />
+          <Property Name="IdProjektu" Type="Int32" />
+          <Property Name="IdStawki" Type="Int32" />
+          <Property Name="Ilosc" Type="Int32" />
+          <Property Name="StawkaBrutto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StawkaNetto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Rabat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywna" Type="Boolean" />
+          <NavigationProperty Name="Faktura" Relationship="Self.FK_PozycjaFaktury_Faktura" FromRole="PozycjaFaktury" ToRole="Faktura" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_PozycjaFaktury_Projekt" FromRole="PozycjaFaktury" ToRole="Projekt" />
+          <NavigationProperty Name="Stawki" Relationship="Self.FK_PozycjaFaktury_Stawki" FromRole="PozycjaFaktury" ToRole="Stawki" />
+        </EntityType>
+        <EntityType Name="PozycjaUmowy">
+          <Key>
+            <PropertyRef Name="IdStatusuUmowy" />
+          </Key>
+          <Property Name="IdStatusuUmowy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUmowy" Type="Int32" />
+          <Property Name="IdProjektu" Type="Int32" />
+          <Property Name="IdStawki" Type="Int32" />
+          <Property Name="Ilosc" Type="Int32" />
+          <Property Name="VAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StawkaBrutto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StawkaNetto" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Zaliczka" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OpisWspolpracy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywna" Type="Boolean" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_PozycjaUmowy_Projekt" FromRole="PozycjaUmowy" ToRole="Projekt" />
+          <NavigationProperty Name="Stawki" Relationship="Self.FK_PozycjaUmowy_Stawki" FromRole="PozycjaUmowy" ToRole="Stawki" />
+          <NavigationProperty Name="Umowa" Relationship="Self.FK_PozycjaUmowy_Umowa" FromRole="PozycjaUmowy" ToRole="Umowa" />
+        </EntityType>
+        <EntityType Name="Pracownik">
+          <Key>
+            <PropertyRef Name="IdPracownika" />
+          </Key>
+          <Property Name="IdPracownika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DrugieImie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko_a" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataUrodzenia" Type="DateTime" Precision="0" />
+          <Property Name="Pesel" Type="String" MaxLength="11" Unicode="true" FixedLength="false" />
+          <Property Name="NIP" Type="String" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="nrKonta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ubezpieczenie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nrDowodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nrPaszportu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusStudenta" Type="Boolean" />
+          <Property Name="ImieMamy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImieOjca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OsobaKontaktowa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="E_mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NrTelefonu1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NrTelefonu2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IdAdresu" Type="Int32" />
+          <Property Name="REGON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RodzajZatrudnienia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataNawiazaniaWspolpracy" Type="DateTime" Precision="0" />
+          <Property Name="IdFirmy" Type="Int32" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Adiustator" Relationship="Self.FK_Adiustator_Pracownik" FromRole="Pracownik" ToRole="Adiustator" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Pracownik_Adres" FromRole="Pracownik" ToRole="Adres" />
+          <NavigationProperty Name="Aktorzy" Relationship="Self.FK_Aktorzy_Pracownik" FromRole="Pracownik" ToRole="Aktorzy" />
+          <NavigationProperty Name="DaneFirmy" Relationship="Self.FK_Pracownik_DaneFirmy" FromRole="Pracownik" ToRole="DaneFirmy" />
+          <NavigationProperty Name="Dzwiekowiec" Relationship="Self.FK_Dzwiekowiec_Pracownik" FromRole="Pracownik" ToRole="Dzwiekowiec" />
+          <NavigationProperty Name="Faktura" Relationship="Self.FK_Faktura_Pracownik" FromRole="Pracownik" ToRole="Faktura" />
+          <NavigationProperty Name="Rezyserzy" Relationship="Self.FK_Rezyserzy_Pracownik" FromRole="Pracownik" ToRole="Rezyserzy" />
+          <NavigationProperty Name="Tlumacze" Relationship="Self.FK_Tlumacze_Pracownik" FromRole="Pracownik" ToRole="Tlumacze" />
+          <NavigationProperty Name="Umowa" Relationship="Self.FK_Umowa_Pracownik" FromRole="Pracownik" ToRole="Umowa" />
+          <NavigationProperty Name="Koordynator" Relationship="TranslateITModel.FK_Koordynator_Pracownik" FromRole="Pracownik" ToRole="Koordynator" />
+        </EntityType>
+        <EntityType Name="Projekt">
+          <Key>
+            <PropertyRef Name="IdProjektu" />
+          </Key>
+          <Property Name="IdProjektu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFirma" Type="Int32" />
+          <Property Name="IdKoordynatoraLektor" Type="Int32" />
+          <Property Name="IdKoordynatoraDubbing" Type="Int32" />
+          <Property Name="IdKoordynatoraNapisy" Type="Int32" />
+          <Property Name="IdTlumaczaNapisy" Type="Int32" />
+          <Property Name="IdTlumaczaDubbing" Type="Int32" />
+          <Property Name="IdTlumaczaLektor" Type="Int32" />
+          <Property Name="IdEtapuProjektu" Type="Int32" />
+          <Property Name="CzyLektor" Type="Boolean" />
+          <Property Name="CzyNapisy" Type="Boolean" />
+          <Property Name="CzyDubbing" Type="Boolean" />
+          <Property Name="IdJezykaOryginalnego" Type="Int32" />
+          <Property Name="IdJezykaTlumaczenia" Type="Int32" />
+          <Property Name="Budzet" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="DaneFirmy" Relationship="Self.FK_Projekt_DaneFirmy" FromRole="Projekt" ToRole="DaneFirmy" />
+          <NavigationProperty Name="EtapyProjektu" Relationship="Self.FK_Projekt_EtapyProjektu" FromRole="Projekt" ToRole="EtapyProjektu" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Film_Projekt" FromRole="Projekt" ToRole="Film" />
+          <NavigationProperty Name="Jezyki" Relationship="Self.FK_Projekt_Jezyki" FromRole="Projekt" ToRole="Jezyki" />
+          <NavigationProperty Name="Jezyki1" Relationship="Self.FK_Projekt_Jezyki1" FromRole="Projekt" ToRole="Jezyki" />
+          <NavigationProperty Name="Koordynator" Relationship="Self.FK_Projekt_Koordynator" FromRole="Projekt" ToRole="Koordynator" />
+          <NavigationProperty Name="Koordynator1" Relationship="Self.FK_Projekt_Koordynator1" FromRole="Projekt" ToRole="Koordynator" />
+          <NavigationProperty Name="Koordynator2" Relationship="Self.FK_Projekt_Koordynator2" FromRole="Projekt" ToRole="Koordynator" />
+          <NavigationProperty Name="Nagrania" Relationship="Self.FK_Nagrania_Projekt" FromRole="Projekt" ToRole="Nagrania" />
+          <NavigationProperty Name="Postacie" Relationship="Self.FK_Postacie_Projekt" FromRole="Projekt" ToRole="Postacie" />
+          <NavigationProperty Name="PozycjaFaktury" Relationship="Self.FK_PozycjaFaktury_Projekt" FromRole="Projekt" ToRole="PozycjaFaktury" />
+          <NavigationProperty Name="PozycjaUmowy" Relationship="Self.FK_PozycjaUmowy_Projekt" FromRole="Projekt" ToRole="PozycjaUmowy" />
+          <NavigationProperty Name="Tlumacze" Relationship="Self.FK_Projekt_Tlumacze" FromRole="Projekt" ToRole="Tlumacze" />
+          <NavigationProperty Name="Tlumacze1" Relationship="Self.FK_Projekt_Tlumacze1" FromRole="Projekt" ToRole="Tlumacze" />
+          <NavigationProperty Name="Tlumacze2" Relationship="Self.FK_Projekt_Tlumacze2" FromRole="Projekt" ToRole="Tlumacze" />
+          <NavigationProperty Name="Trailer" Relationship="Self.FK_Trailer_Projekt" FromRole="Projekt" ToRole="Trailer" />
+          <NavigationProperty Name="Odcinki" Relationship="TranslateITModel.FK_Odcinki_Projekt" FromRole="Projekt" ToRole="Odcinki" />
+        </EntityType>
+        <EntityType Name="Rezyserzy">
+          <Key>
+            <PropertyRef Name="IdRezysera" />
+          </Key>
+          <Property Name="IdRezysera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="OpisRezysera" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Nagrania" Relationship="Self.FK_Nagrania_Rezyserzy" FromRole="Rezyserzy" ToRole="Nagrania" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Rezyserzy_Pracownik" FromRole="Rezyserzy" ToRole="Pracownik" />
+        </EntityType>
+        <EntityType Name="RodzajUmowy">
+          <Key>
+            <PropertyRef Name="IdRodzajuUmowy" />
+          </Key>
+          <Property Name="IdRodzajuUmowy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Umowa" Relationship="Self.FK_Umowa_RodzajUmowy" FromRole="RodzajUmowy" ToRole="Umowa" />
+        </EntityType>
+        <EntityType Name="SalaNagraniowa">
+          <Key>
+            <PropertyRef Name="IdSaliNagraniowej" />
+          </Key>
+          <Property Name="IdSaliNagraniowej" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumerSaliNagraniowej" Type="Int32" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="HarmonogramNagran" Relationship="Self.FK_HarmonogramNagran_SalaNagraniowa" FromRole="SalaNagraniowa" ToRole="HarmonogramNagran" />
+        </EntityType>
+        <EntityType Name="Serial">
+          <Key>
+            <PropertyRef Name="IdSerialu" />
+          </Key>
+          <Property Name="IdSerialu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OryginalnyTytul" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogoSerialu" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TytułSerialuTlumaczenie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IloscSezonow" Type="Int32" />
+          <Property Name="IloscOdcinkow" Type="Int32" />
+          <Property Name="OcenaFilmweb" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="WWWDoFilmweb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TlumaczoneOd" Type="DateTime" Precision="0" />
+          <Property Name="DataProdukcji" Type="DateTime" Precision="0" />
+          <Property Name="CzyNadalNagrywany" Type="Boolean" />
+          <Property Name="RokZakonczeniaProdukcji" Type="DateTime" Precision="0" />
+          <Property Name="TlumaczoneDla" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdKrajProdukcji" Type="Int32" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Kraj" Relationship="Self.FK_Serial_Kraj" FromRole="Serial" ToRole="Kraj" />
+          <NavigationProperty Name="Odcinki" Relationship="Self.FK_Odcinki_Serial" FromRole="Serial" ToRole="Odcinki" />
+          <NavigationProperty Name="Sezony" Relationship="Self.FK_Sezony_Serial" FromRole="Serial" ToRole="Sezony" />
+        </EntityType>
+        <EntityType Name="Sezony">
+          <Key>
+            <PropertyRef Name="IdSezonu" />
+          </Key>
+          <Property Name="IdSezonu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSerialu" Type="Int32" />
+          <Property Name="NumerSezonu" Type="Int32" />
+          <Property Name="NazwaSezonu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IloscOdcinkow" Type="Int32" />
+          <Property Name="OpisSezonu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OcenaSezonuFilmweb" Type="Int32" />
+          <Property Name="OcenaSezonuIMDB" Type="Int32" />
+          <Property Name="WWWIMDB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WWWFilmweb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IloscPostaci" Type="Int32" />
+          <Property Name="IloscPiosenek" Type="Int32" />
+          <Property Name="DataProdukcji" Type="DateTime" Precision="0" />
+          <Property Name="PremieraWPolsce" Type="DateTime" Precision="0" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Odcinki" Relationship="Self.FK_Odcinki_Sezony" FromRole="Sezony" ToRole="Odcinki" />
+          <NavigationProperty Name="Serial" Relationship="Self.FK_Sezony_Serial" FromRole="Sezony" ToRole="Serial" />
+        </EntityType>
+        <EntityType Name="SposobPlatnosci">
+          <Key>
+            <PropertyRef Name="IdSposobuPlatnosci" />
+          </Key>
+          <Property Name="IdSposobuPlatnosci" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywna" Type="Boolean" />
+          <NavigationProperty Name="Faktura" Relationship="Self.FK_Faktura_SposobPlatnosci" FromRole="SposobPlatnosci" ToRole="Faktura" />
+          <NavigationProperty Name="Umowa" Relationship="Self.FK_Umowa_SposobPlatnosci" FromRole="SposobPlatnosci" ToRole="Umowa" />
+        </EntityType>
+        <EntityType Name="Stawki">
+          <Key>
+            <PropertyRef Name="IdStawki" />
+          </Key>
+          <Property Name="IdStawki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RodzajStawki" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Stawka" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="PozycjaFaktury" Relationship="Self.FK_PozycjaFaktury_Stawki" FromRole="Stawki" ToRole="PozycjaFaktury" />
+          <NavigationProperty Name="PozycjaUmowy" Relationship="Self.FK_PozycjaUmowy_Stawki" FromRole="Stawki" ToRole="PozycjaUmowy" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tlumacze">
+          <Key>
+            <PropertyRef Name="IdTlumacza" />
+          </Key>
+          <Property Name="IdTlumacza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="OpisTlumacza" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Odcinki" Relationship="Self.FK_Odcinki_Tlumacze" FromRole="Tlumacze" ToRole="Odcinki" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Tlumacze_Pracownik" FromRole="Tlumacze" ToRole="Pracownik" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Projekt_Tlumacze" FromRole="Tlumacze" ToRole="Projekt" />
+          <NavigationProperty Name="Projekt1" Relationship="Self.FK_Projekt_Tlumacze1" FromRole="Tlumacze" ToRole="Projekt" />
+          <NavigationProperty Name="Projekt2" Relationship="Self.FK_Projekt_Tlumacze2" FromRole="Tlumacze" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="Trailer">
+          <Key>
+            <PropertyRef Name="IdTrailera" />
+          </Key>
+          <Property Name="IdTrailera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProjektu" Type="Int32" />
+          <Property Name="OryginalnaNazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NazwaTrailera" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DlugoscTrailera" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deadline" Type="DateTime" Precision="3" />
+          <Property Name="CzyAktywne" Type="Boolean" />
+          <NavigationProperty Name="Projekt" Relationship="Self.FK_Trailer_Projekt" FromRole="Trailer" ToRole="Projekt" />
+        </EntityType>
+        <EntityType Name="Umowa">
+          <Key>
+            <PropertyRef Name="IdUmowy" />
+          </Key>
+          <Property Name="IdUmowy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numer" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DataWystawienia" Type="DateTime" Precision="0" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="IdFirmy" Type="Int32" />
+          <Property Name="TerminPlatnosci" Type="DateTime" Precision="0" />
+          <Property Name="CzyZatwierdzona" Type="Boolean" />
+          <Property Name="IdRodzajuUmowy" Type="Int32" />
+          <Property Name="IdSposobuPlatnosci" Type="Int32" />
+          <Property Name="OpisWspolpracy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywna" Type="Boolean" />
+          <NavigationProperty Name="DaneFirmy" Relationship="Self.FK_Umowa_DaneFirmy" FromRole="Umowa" ToRole="DaneFirmy" />
+          <NavigationProperty Name="PozycjaUmowy" Relationship="Self.FK_PozycjaUmowy_Umowa" FromRole="Umowa" ToRole="PozycjaUmowy" />
+          <NavigationProperty Name="Pracownik" Relationship="Self.FK_Umowa_Pracownik" FromRole="Umowa" ToRole="Pracownik" />
+          <NavigationProperty Name="RodzajUmowy" Relationship="Self.FK_Umowa_RodzajUmowy" FromRole="Umowa" ToRole="RodzajUmowy" />
+          <NavigationProperty Name="SposobPlatnosci" Relationship="Self.FK_Umowa_SposobPlatnosci" FromRole="Umowa" ToRole="SposobPlatnosci" />
+        </EntityType>
+        <Association Name="FK_Adiustator_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Adiustator" Type="Self.Adiustator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Adiustator">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_Kraj">
+          <End Role="Kraj" Type="Self.Kraj" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraj">
+              <PropertyRef Name="IdKraju" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="IdKraju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DaneFirmy_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="DaneFirmy">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pracownik_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aktorzy_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Aktorzy" Type="Self.Aktorzy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Aktorzy">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Aktorzy">
+          <End Role="Aktorzy" Type="Self.Aktorzy" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aktorzy">
+              <PropertyRef Name="IdAktora" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdAktora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postacie_Aktorzy">
+          <End Role="Aktorzy" Type="Self.Aktorzy" Multiplicity="0..1" />
+          <End Role="Postacie" Type="Self.Postacie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aktorzy">
+              <PropertyRef Name="IdAktora" />
+            </Principal>
+            <Dependent Role="Postacie">
+              <PropertyRef Name="IdAktora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktura_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Faktura">
+              <PropertyRef Name="IdFirmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="IdFirmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pracownik_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Pracownik">
+              <PropertyRef Name="IdFirmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdFirma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Umowa_DaneFirmy">
+          <End Role="DaneFirmy" Type="Self.DaneFirmy" Multiplicity="0..1" />
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaneFirmy">
+              <PropertyRef Name="IdFirmy" />
+            </Principal>
+            <Dependent Role="Umowa">
+              <PropertyRef Name="IdFirmy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dzwiekowiec_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Dzwiekowiec" Type="Self.Dzwiekowiec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Dzwiekowiec">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Dzwiekowiec">
+          <End Role="Dzwiekowiec" Type="Self.Dzwiekowiec" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dzwiekowiec">
+              <PropertyRef Name="IdDzwiekowca" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdDzwiekowca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_EtapyProjektu">
+          <End Role="EtapyProjektu" Type="Self.EtapyProjektu" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EtapyProjektu">
+              <PropertyRef Name="IdEtapuProjektu" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdEtapuProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktura_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Faktura">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktura_SposobPlatnosci">
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SposobPlatnosci">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Principal>
+            <Dependent Role="Faktura">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaFaktury_Faktura">
+          <End Role="Faktura" Type="Self.Faktura" Multiplicity="0..1" />
+          <End Role="PozycjaFaktury" Type="Self.PozycjaFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faktura">
+              <PropertyRef Name="IdFaktury" />
+            </Principal>
+            <Dependent Role="PozycjaFaktury">
+              <PropertyRef Name="IdFaktury" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Kraj">
+          <End Role="Kraj" Type="Self.Kraj" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraj">
+              <PropertyRef Name="IdKraju" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="IdKrajPochodzenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HarmonogramNagran_Nagrania">
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="0..1" />
+          <End Role="HarmonogramNagran" Type="Self.HarmonogramNagran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nagrania">
+              <PropertyRef Name="IdNagrania" />
+            </Principal>
+            <Dependent Role="HarmonogramNagran">
+              <PropertyRef Name="IdNagrania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HarmonogramNagran_SalaNagraniowa">
+          <End Role="SalaNagraniowa" Type="Self.SalaNagraniowa" Multiplicity="0..1" />
+          <End Role="HarmonogramNagran" Type="Self.HarmonogramNagran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaNagraniowa">
+              <PropertyRef Name="IdSaliNagraniowej" />
+            </Principal>
+            <Dependent Role="HarmonogramNagran">
+              <PropertyRef Name="IdSaliNagran" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Jezyki">
+          <End Role="Jezyki" Type="Self.Jezyki" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jezyki">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdJezykaOryginalnego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Jezyki1">
+          <End Role="Jezyki" Type="Self.Jezyki" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jezyki">
+              <PropertyRef Name="IdLanguage" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdJezykaTlumaczenia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Koordynator">
+          <End Role="Koordynator" Type="Self.Koordynator" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Koordynator">
+              <PropertyRef Name="IdKoordynatora" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdKoordynatoraDubbing" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Koordynator1">
+          <End Role="Koordynator" Type="Self.Koordynator" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Koordynator">
+              <PropertyRef Name="IdKoordynatora" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdKoordynatoraLektor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Koordynator2">
+          <End Role="Koordynator" Type="Self.Koordynator" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Koordynator">
+              <PropertyRef Name="IdKoordynatora" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdKoordynatoraNapisy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Serial_Kraj">
+          <End Role="Kraj" Type="Self.Kraj" Multiplicity="0..1" />
+          <End Role="Serial" Type="Self.Serial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kraj">
+              <PropertyRef Name="IdKraju" />
+            </Principal>
+            <Dependent Role="Serial">
+              <PropertyRef Name="IdKrajProdukcji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Postacie">
+          <End Role="Postacie" Type="Self.Postacie" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postacie">
+              <PropertyRef Name="IdPostaci" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdPostaci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nagrania_Rezyserzy">
+          <End Role="Rezyserzy" Type="Self.Rezyserzy" Multiplicity="0..1" />
+          <End Role="Nagrania" Type="Self.Nagrania" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezyserzy">
+              <PropertyRef Name="IdRezysera" />
+            </Principal>
+            <Dependent Role="Nagrania">
+              <PropertyRef Name="IdRezysera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odcinki_Serial">
+          <End Role="Serial" Type="Self.Serial" Multiplicity="0..1" />
+          <End Role="Odcinki" Type="Self.Odcinki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serial">
+              <PropertyRef Name="IdSerialu" />
+            </Principal>
+            <Dependent Role="Odcinki">
+              <PropertyRef Name="IdSerialu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odcinki_Sezony">
+          <End Role="Sezony" Type="Self.Sezony" Multiplicity="0..1" />
+          <End Role="Odcinki" Type="Self.Odcinki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sezony">
+              <PropertyRef Name="IdSezonu" />
+            </Principal>
+            <Dependent Role="Odcinki">
+              <PropertyRef Name="IdSezonu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Odcinki_Tlumacze">
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="0..1" />
+          <End Role="Odcinki" Type="Self.Odcinki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tlumacze">
+              <PropertyRef Name="IdTlumacza" />
+            </Principal>
+            <Dependent Role="Odcinki">
+              <PropertyRef Name="IdTlumaczaPiosenek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postacie_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="Postacie" Type="Self.Postacie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Postacie">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaFaktury_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="PozycjaFaktury" Type="Self.PozycjaFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="PozycjaFaktury">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaFaktury_Stawki">
+          <End Role="Stawki" Type="Self.Stawki" Multiplicity="0..1" />
+          <End Role="PozycjaFaktury" Type="Self.PozycjaFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stawki">
+              <PropertyRef Name="IdStawki" />
+            </Principal>
+            <Dependent Role="PozycjaFaktury">
+              <PropertyRef Name="IdStawki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaUmowy_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="PozycjaUmowy" Type="Self.PozycjaUmowy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="PozycjaUmowy">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaUmowy_Stawki">
+          <End Role="Stawki" Type="Self.Stawki" Multiplicity="0..1" />
+          <End Role="PozycjaUmowy" Type="Self.PozycjaUmowy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stawki">
+              <PropertyRef Name="IdStawki" />
+            </Principal>
+            <Dependent Role="PozycjaUmowy">
+              <PropertyRef Name="IdStawki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjaUmowy_Umowa">
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="0..1" />
+          <End Role="PozycjaUmowy" Type="Self.PozycjaUmowy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Umowa">
+              <PropertyRef Name="IdUmowy" />
+            </Principal>
+            <Dependent Role="PozycjaUmowy">
+              <PropertyRef Name="IdUmowy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezyserzy_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Rezyserzy" Type="Self.Rezyserzy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Rezyserzy">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tlumacze_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Tlumacze">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Umowa_Pracownik">
+          <End Role="Pracownik" Type="Self.Pracownik" Multiplicity="0..1" />
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Umowa">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Tlumacze">
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tlumacze">
+              <PropertyRef Name="IdTlumacza" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdTlumaczaDubbing" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Tlumacze1">
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tlumacze">
+              <PropertyRef Name="IdTlumacza" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdTlumaczaLektor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Projekt_Tlumacze2">
+          <End Role="Tlumacze" Type="Self.Tlumacze" Multiplicity="0..1" />
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tlumacze">
+              <PropertyRef Name="IdTlumacza" />
+            </Principal>
+            <Dependent Role="Projekt">
+              <PropertyRef Name="IdTlumaczaNapisy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trailer_Projekt">
+          <End Role="Projekt" Type="Self.Projekt" Multiplicity="0..1" />
+          <End Role="Trailer" Type="Self.Trailer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Trailer">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Umowa_RodzajUmowy">
+          <End Role="RodzajUmowy" Type="Self.RodzajUmowy" Multiplicity="0..1" />
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajUmowy">
+              <PropertyRef Name="IdRodzajuUmowy" />
+            </Principal>
+            <Dependent Role="Umowa">
+              <PropertyRef Name="IdRodzajuUmowy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sezony_Serial">
+          <End Role="Serial" Type="Self.Serial" Multiplicity="0..1" />
+          <End Role="Sezony" Type="Self.Sezony" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Serial">
+              <PropertyRef Name="IdSerialu" />
+            </Principal>
+            <Dependent Role="Sezony">
+              <PropertyRef Name="IdSerialu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Umowa_SposobPlatnosci">
+          <End Role="SposobPlatnosci" Type="Self.SposobPlatnosci" Multiplicity="0..1" />
+          <End Role="Umowa" Type="Self.Umowa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SposobPlatnosci">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Principal>
+            <Dependent Role="Umowa">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TranslateITEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adiustator" EntityType="Self.Adiustator" />
+          <EntitySet Name="Adres" EntityType="Self.Adres" />
+          <EntitySet Name="Aktorzy" EntityType="Self.Aktorzy" />
+          <EntitySet Name="DaneFirmy" EntityType="Self.DaneFirmy" />
+          <EntitySet Name="Dzwiekowiec" EntityType="Self.Dzwiekowiec" />
+          <EntitySet Name="EtapyProjektu" EntityType="Self.EtapyProjektu" />
+          <EntitySet Name="Faktura" EntityType="Self.Faktura" />
+          <EntitySet Name="Film" EntityType="Self.Film" />
+          <EntitySet Name="HarmonogramNagran" EntityType="Self.HarmonogramNagran" />
+          <EntitySet Name="Jezyki" EntityType="Self.Jezyki" />
+          <EntitySet Name="Koordynator" EntityType="Self.Koordynator" />
+          <EntitySet Name="Kraj" EntityType="Self.Kraj" />
+          <EntitySet Name="Nagrania" EntityType="Self.Nagrania" />
+          <EntitySet Name="Odcinki" EntityType="Self.Odcinki" />
+          <EntitySet Name="Postacie" EntityType="Self.Postacie" />
+          <EntitySet Name="PozycjaFaktury" EntityType="Self.PozycjaFaktury" />
+          <EntitySet Name="PozycjaUmowy" EntityType="Self.PozycjaUmowy" />
+          <EntitySet Name="Pracownik" EntityType="Self.Pracownik" />
+          <EntitySet Name="Projekt" EntityType="Self.Projekt" />
+          <EntitySet Name="Rezyserzy" EntityType="Self.Rezyserzy" />
+          <EntitySet Name="RodzajUmowy" EntityType="Self.RodzajUmowy" />
+          <EntitySet Name="SalaNagraniowa" EntityType="Self.SalaNagraniowa" />
+          <EntitySet Name="Serial" EntityType="Self.Serial" />
+          <EntitySet Name="Sezony" EntityType="Self.Sezony" />
+          <EntitySet Name="SposobPlatnosci" EntityType="Self.SposobPlatnosci" />
+          <EntitySet Name="Stawki" EntityType="Self.Stawki" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tlumacze" EntityType="Self.Tlumacze" />
+          <EntitySet Name="Trailer" EntityType="Self.Trailer" />
+          <EntitySet Name="Umowa" EntityType="Self.Umowa" />
+          <AssociationSet Name="FK_Adiustator_Pracownik" Association="Self.FK_Adiustator_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Adiustator" EntitySet="Adiustator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_Kraj" Association="Self.FK_Adres_Kraj">
+            <End Role="Kraj" EntitySet="Kraj" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DaneFirmy_Adres" Association="Self.FK_DaneFirmy_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pracownik_Adres" Association="Self.FK_Pracownik_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aktorzy_Pracownik" Association="Self.FK_Aktorzy_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Aktorzy" EntitySet="Aktorzy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Aktorzy" Association="Self.FK_Nagrania_Aktorzy">
+            <End Role="Aktorzy" EntitySet="Aktorzy" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postacie_Aktorzy" Association="Self.FK_Postacie_Aktorzy">
+            <End Role="Aktorzy" EntitySet="Aktorzy" />
+            <End Role="Postacie" EntitySet="Postacie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktura_DaneFirmy" Association="Self.FK_Faktura_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Faktura" EntitySet="Faktura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_DaneFirmy" Association="Self.FK_Film_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pracownik_DaneFirmy" Association="Self.FK_Pracownik_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Pracownik" EntitySet="Pracownik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_DaneFirmy" Association="Self.FK_Projekt_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Umowa_DaneFirmy" Association="Self.FK_Umowa_DaneFirmy">
+            <End Role="DaneFirmy" EntitySet="DaneFirmy" />
+            <End Role="Umowa" EntitySet="Umowa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dzwiekowiec_Pracownik" Association="Self.FK_Dzwiekowiec_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Dzwiekowiec" EntitySet="Dzwiekowiec" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Dzwiekowiec" Association="Self.FK_Nagrania_Dzwiekowiec">
+            <End Role="Dzwiekowiec" EntitySet="Dzwiekowiec" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_EtapyProjektu" Association="Self.FK_Projekt_EtapyProjektu">
+            <End Role="EtapyProjektu" EntitySet="EtapyProjektu" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktura_Pracownik" Association="Self.FK_Faktura_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Faktura" EntitySet="Faktura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktura_SposobPlatnosci" Association="Self.FK_Faktura_SposobPlatnosci">
+            <End Role="SposobPlatnosci" EntitySet="SposobPlatnosci" />
+            <End Role="Faktura" EntitySet="Faktura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaFaktury_Faktura" Association="Self.FK_PozycjaFaktury_Faktura">
+            <End Role="Faktura" EntitySet="Faktura" />
+            <End Role="PozycjaFaktury" EntitySet="PozycjaFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Kraj" Association="Self.FK_Film_Kraj">
+            <End Role="Kraj" EntitySet="Kraj" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_Projekt" Association="Self.FK_Film_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HarmonogramNagran_Nagrania" Association="Self.FK_HarmonogramNagran_Nagrania">
+            <End Role="Nagrania" EntitySet="Nagrania" />
+            <End Role="HarmonogramNagran" EntitySet="HarmonogramNagran" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HarmonogramNagran_SalaNagraniowa" Association="Self.FK_HarmonogramNagran_SalaNagraniowa">
+            <End Role="SalaNagraniowa" EntitySet="SalaNagraniowa" />
+            <End Role="HarmonogramNagran" EntitySet="HarmonogramNagran" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Jezyki" Association="Self.FK_Projekt_Jezyki">
+            <End Role="Jezyki" EntitySet="Jezyki" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Jezyki1" Association="Self.FK_Projekt_Jezyki1">
+            <End Role="Jezyki" EntitySet="Jezyki" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Koordynator" Association="Self.FK_Projekt_Koordynator">
+            <End Role="Koordynator" EntitySet="Koordynator" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Koordynator1" Association="Self.FK_Projekt_Koordynator1">
+            <End Role="Koordynator" EntitySet="Koordynator" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Koordynator2" Association="Self.FK_Projekt_Koordynator2">
+            <End Role="Koordynator" EntitySet="Koordynator" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Serial_Kraj" Association="Self.FK_Serial_Kraj">
+            <End Role="Kraj" EntitySet="Kraj" />
+            <End Role="Serial" EntitySet="Serial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Postacie" Association="Self.FK_Nagrania_Postacie">
+            <End Role="Postacie" EntitySet="Postacie" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Projekt" Association="Self.FK_Nagrania_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nagrania_Rezyserzy" Association="Self.FK_Nagrania_Rezyserzy">
+            <End Role="Rezyserzy" EntitySet="Rezyserzy" />
+            <End Role="Nagrania" EntitySet="Nagrania" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odcinki_Serial" Association="Self.FK_Odcinki_Serial">
+            <End Role="Serial" EntitySet="Serial" />
+            <End Role="Odcinki" EntitySet="Odcinki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odcinki_Sezony" Association="Self.FK_Odcinki_Sezony">
+            <End Role="Sezony" EntitySet="Sezony" />
+            <End Role="Odcinki" EntitySet="Odcinki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odcinki_Tlumacze" Association="Self.FK_Odcinki_Tlumacze">
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+            <End Role="Odcinki" EntitySet="Odcinki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postacie_Projekt" Association="Self.FK_Postacie_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Postacie" EntitySet="Postacie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaFaktury_Projekt" Association="Self.FK_PozycjaFaktury_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="PozycjaFaktury" EntitySet="PozycjaFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaFaktury_Stawki" Association="Self.FK_PozycjaFaktury_Stawki">
+            <End Role="Stawki" EntitySet="Stawki" />
+            <End Role="PozycjaFaktury" EntitySet="PozycjaFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaUmowy_Projekt" Association="Self.FK_PozycjaUmowy_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="PozycjaUmowy" EntitySet="PozycjaUmowy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaUmowy_Stawki" Association="Self.FK_PozycjaUmowy_Stawki">
+            <End Role="Stawki" EntitySet="Stawki" />
+            <End Role="PozycjaUmowy" EntitySet="PozycjaUmowy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjaUmowy_Umowa" Association="Self.FK_PozycjaUmowy_Umowa">
+            <End Role="Umowa" EntitySet="Umowa" />
+            <End Role="PozycjaUmowy" EntitySet="PozycjaUmowy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezyserzy_Pracownik" Association="Self.FK_Rezyserzy_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Rezyserzy" EntitySet="Rezyserzy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tlumacze_Pracownik" Association="Self.FK_Tlumacze_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Umowa_Pracownik" Association="Self.FK_Umowa_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Umowa" EntitySet="Umowa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Tlumacze" Association="Self.FK_Projekt_Tlumacze">
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Tlumacze1" Association="Self.FK_Projekt_Tlumacze1">
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Projekt_Tlumacze2" Association="Self.FK_Projekt_Tlumacze2">
+            <End Role="Tlumacze" EntitySet="Tlumacze" />
+            <End Role="Projekt" EntitySet="Projekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trailer_Projekt" Association="Self.FK_Trailer_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Trailer" EntitySet="Trailer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Umowa_RodzajUmowy" Association="Self.FK_Umowa_RodzajUmowy">
+            <End Role="RodzajUmowy" EntitySet="RodzajUmowy" />
+            <End Role="Umowa" EntitySet="Umowa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sezony_Serial" Association="Self.FK_Sezony_Serial">
+            <End Role="Serial" EntitySet="Serial" />
+            <End Role="Sezony" EntitySet="Sezony" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Umowa_SposobPlatnosci" Association="Self.FK_Umowa_SposobPlatnosci">
+            <End Role="SposobPlatnosci" EntitySet="SposobPlatnosci" />
+            <End Role="Umowa" EntitySet="Umowa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Odcinki_Projekt" Association="TranslateITModel.FK_Odcinki_Projekt">
+            <End Role="Projekt" EntitySet="Projekt" />
+            <End Role="Odcinki" EntitySet="Odcinki" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TranslateITModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TranslateITModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_Koordynator_Pracownik" Association="TranslateITModel.FK_Koordynator_Pracownik">
+            <End Role="Pracownik" EntitySet="Pracownik" />
+            <End Role="Koordynator" EntitySet="Koordynator" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Odcinki_Projekt">
+          <End Type="TranslateITModel.Projekt" Role="Projekt" Multiplicity="0..1" />
+          <End Type="TranslateITModel.Odcinki" Role="Odcinki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projekt">
+              <PropertyRef Name="IdProjektu" />
+            </Principal>
+            <Dependent Role="Odcinki">
+              <PropertyRef Name="IdProjektu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <Association Name="FK_Koordynator_Pracownik">
+          <End Type="TranslateITModel.Pracownik" Role="Pracownik" Multiplicity="0..1" />
+          <End Type="TranslateITModel.Koordynator" Role="Koordynator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownik">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Koordynator">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TranslateITModelStoreContainer" CdmEntityContainer="TranslateITEntities4">
+          <EntitySetMapping Name="Adiustator">
+            <EntityTypeMapping TypeName="TranslateITModel.Adiustator">
+              <MappingFragment StoreEntitySet="Adiustator">
+                <ScalarProperty Name="IdAdiustatora" ColumnName="IdAdiustatora" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adres">
+            <EntityTypeMapping TypeName="TranslateITModel.Adres">
+              <MappingFragment StoreEntitySet="Adres">
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="NumerDomu" ColumnName="NumerDomu" />
+                <ScalarProperty Name="NumerMieszkania" ColumnName="NumerMieszkania" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="Poczta" ColumnName="Poczta" />
+                <ScalarProperty Name="IdKraju" ColumnName="IdKraju" />
+                <ScalarProperty Name="czyAktywne" ColumnName="czyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aktorzy">
+            <EntityTypeMapping TypeName="TranslateITModel.Aktorzy">
+              <MappingFragment StoreEntitySet="Aktorzy">
+                <ScalarProperty Name="IdAktora" ColumnName="IdAktora" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="OpisAktora" ColumnName="OpisAktora" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DaneFirmy">
+            <EntityTypeMapping TypeName="TranslateITModel.DaneFirmy">
+              <MappingFragment StoreEntitySet="DaneFirmy">
+                <ScalarProperty Name="IdFirmy" ColumnName="IdFirmy" />
+                <ScalarProperty Name="NazwaFirmy" ColumnName="NazwaFirmy" />
+                <ScalarProperty Name="SkroconaNazwa" ColumnName="SkroconaNazwa" />
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="OpisFirmy" ColumnName="OpisFirmy" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="REGON" ColumnName="REGON" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="StronaWWW" ColumnName="StronaWWW" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="DataZalozenia" ColumnName="DataZalozenia" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="OsobaFizyczna" ColumnName="OsobaFizyczna" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dzwiekowiec">
+            <EntityTypeMapping TypeName="TranslateITModel.Dzwiekowiec">
+              <MappingFragment StoreEntitySet="Dzwiekowiec">
+                <ScalarProperty Name="IdDzwiekowca" ColumnName="IdDzwiekowca" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EtapyProjektu">
+            <EntityTypeMapping TypeName="TranslateITModel.EtapyProjektu">
+              <MappingFragment StoreEntitySet="EtapyProjektu">
+                <ScalarProperty Name="IdEtapuProjektu" ColumnName="IdEtapuProjektu" />
+                <ScalarProperty Name="EtapProjektu" ColumnName="EtapProjektu" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faktura">
+            <EntityTypeMapping TypeName="TranslateITModel.Faktura">
+              <MappingFragment StoreEntitySet="Faktura">
+                <ScalarProperty Name="IdFaktury" ColumnName="IdFaktury" />
+                <ScalarProperty Name="Numer" ColumnName="Numer" />
+                <ScalarProperty Name="DataWystawienia" ColumnName="DataWystawienia" />
+                <ScalarProperty Name="IdFirmy" ColumnName="IdFirmy" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="TerminPlatnosci" ColumnName="TerminPlatnosci" />
+                <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+                <ScalarProperty Name="CzyZatwierdzona" ColumnName="CzyZatwierdzona" />
+                <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Film">
+            <EntityTypeMapping TypeName="TranslateITModel.Film">
+              <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="IdFilmu" ColumnName="IdFilmu" />
+                <ScalarProperty Name="IdProjektu" ColumnName="IdProjektu" />
+                <ScalarProperty Name="OryginalnyTytuł" ColumnName="OryginalnyTytuł" />
+                <ScalarProperty Name="TutulFilmu" ColumnName="TutulFilmu" />
+                <ScalarProperty Name="NameCode" ColumnName="NameCode" />
+                <ScalarProperty Name="OcenaFilmuFilmweb" ColumnName="OcenaFilmuFilmweb" />
+                <ScalarProperty Name="WWWFilmweb" ColumnName="WWWFilmweb" />
+                <ScalarProperty Name="CzasTrwaniaFilmuMin" ColumnName="CzasTrwaniaFilmuMin" />
+                <ScalarProperty Name="Akty" ColumnName="Akty" />
+                <ScalarProperty Name="Linijki" ColumnName="Linijki" />
+                <ScalarProperty Name="Postacie" ColumnName="Postacie" />
+                <ScalarProperty Name="IdFirmy" ColumnName="IdFirmy" />
+                <ScalarProperty Name="LogoFilmu" ColumnName="LogoFilmu" />
+                <ScalarProperty Name="IdKrajPochodzenia" ColumnName="IdKrajPochodzenia" />
+                <ScalarProperty Name="RokProdukcji" ColumnName="RokProdukcji" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="DataPremiery" ColumnName="DataPremiery" />
+                <ScalarProperty Name="OpisFilmu" ColumnName="OpisFilmu" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HarmonogramNagran">
+            <EntityTypeMapping TypeName="TranslateITModel.HarmonogramNagran">
+              <MappingFragment StoreEntitySet="HarmonogramNagran">
+                <ScalarProperty Name="IdHarmonogramuNagrania" ColumnName="IdHarmonogramuNagrania" />
+                <ScalarProperty Name="IdNagrania" ColumnName="IdNagrania" />
+                <ScalarProperty Name="IdSaliNagran" ColumnName="IdSaliNagran" />
+                <ScalarProperty Name="DataRozpoczecia" ColumnName="DataRozpoczecia" />
+                <ScalarProperty Name="DataZakonczenia" ColumnName="DataZakonczenia" />
+                <ScalarProperty Name="czyLektor" ColumnName="czyLektor" />
+                <ScalarProperty Name="czyDubbing" ColumnName="czyDubbing" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jezyki">
+            <EntityTypeMapping TypeName="TranslateITModel.Jezyki">
+              <MappingFragment StoreEntitySet="Jezyki">
+                <ScalarProperty Name="IdLanguage" ColumnName="IdLanguage" />
+                <ScalarProperty Name="Jezyk" ColumnName="Jezyk" />
+                <ScalarProperty Name="SkrotowoJezyk" ColumnName="SkrotowoJezyk" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Koordynator">
+            <EntityTypeMapping TypeName="TranslateITModel.Koordynator">
+              <MappingFragment StoreEntitySet="Koordynator">
+                <ScalarProperty Name="IdKoordynatora" ColumnName="IdKoordynatora" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kraj">
+            <EntityTypeMapping TypeName="TranslateITModel.Kraj">
+              <MappingFragment StoreEntitySet="Kraj">
+                <ScalarProperty Name="IdKraju" ColumnName="IdKraju" />
+                <ScalarProperty Name="NazwaKraju" ColumnName="NazwaKraju" />
+                <ScalarProperty Name="czyAktywne" ColumnName="czyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nagrania">
+            <EntityTypeMapping TypeName="TranslateITModel.Nagrania">
+              <MappingFragment StoreEntitySet="Nagrania">
+                <ScalarProperty Name="IdNagrania" ColumnName="IdNagrania" />
+                <ScalarProperty Name="Nagranie" ColumnName="Nagranie" />
+                <ScalarProperty Name="IdAktora" ColumnName="IdAktora" />
+                <ScalarProperty Name="IdRezysera" ColumnName="IdRezysera" />
+                <ScalarProperty Name="IdProjektu" ColumnName="IdProjektu" />
+                <ScalarProperty Name="IdPostaci" ColumnName="IdPostaci" />
+                <ScalarProperty Name="IdDzwiekowca" ColumnName="IdDzwiekowca" />
+                <ScalarProperty Name="DataNagrania" ColumnName="DataNagrania" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Odcinki">
+            <EntityTypeMapping TypeName="TranslateITModel.Odcinki">
+              <MappingFragment StoreEntitySet="Odcinki">
+                <ScalarProperty Name="IdProjektu" ColumnName="IdProjektu" />
+                <ScalarProperty Name="IdOdcinka" ColumnName="IdOdcinka" />
+                <ScalarProperty Name="NazwaOdcinka" ColumnName="NazwaOdcinka" />
+                <ScalarProperty Name="NumerOdcinka" ColumnName="NumerOdcinka" />
+                <ScalarProperty Name="IdSezonu" ColumnName="IdSezonu" />
+                <ScalarProperty Name="IdSerialu" ColumnName="IdSerialu" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="DataProdukcji" ColumnName="DataProdukcji" />
+                <ScalarProperty Name="Piosenki" ColumnName="Piosenki" />
+                <ScalarProperty Name="Postacie" ColumnName="Postacie" />
+                <ScalarProperty Name="OpisOdcinka" ColumnName="OpisOdcinka" />
+                <ScalarProperty Name="IdTlumaczaPiosenek" ColumnName="IdTlumaczaPiosenek" />
+                <ScalarProperty Name="DlugoscOdcinkaMIN" ColumnName="DlugoscOdcinkaMIN" />
+                <ScalarProperty Name="IloscLinijek" ColumnName="IloscLinijek" />
+                <ScalarProperty Name="Akty" ColumnName="Akty" />
+                <ScalarProperty Name="DataPrzyjecia" ColumnName="DataPrzyjecia" />
+                <ScalarProperty Name="Budzet" ColumnName="Budzet" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postacie">
+            <EntityTypeMapping TypeName="TranslateITModel.Postacie">
+              <MappingFragment StoreEntitySet="Postacie">
+                <ScalarProperty Name="IdPostaci" ColumnName="IdPostaci" />
+                <ScalarProperty Name="IdProjektu" ColumnName="IdProjektu" />
+                <ScalarProperty Name="IdAktora" ColumnName="IdAktora" />
+                <ScalarProperty Name="PostacNazwa" ColumnName="PostacNazwa" />
+                <ScalarProperty Name="Linijki" ColumnName="Linijki" />
+                <ScalarProperty Name="Stawka" ColumnName="Stawka" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PozycjaFaktury">
+            <EntityTypeMapping TypeName="TranslateITModel.PozycjaFaktury">
+              <MappingFragment StoreEntitySet="PozycjaFaktury">
+                <ScalarProperty Name="IdPozycjiFaktury" ColumnName="IdPozycjiFaktury" />
+                <ScalarProperty Name="IdFaktury" ColumnName="IdFaktury" />
+                <ScalarProperty Name="IdProjektu" ColumnName="IdProjektu" />
+                <ScalarProperty Name="IdStawki" ColumnName="IdStawki" />
+                <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+                <ScalarProperty Name="StawkaBrutto" ColumnName="StawkaBrutto" />
+                <ScalarProperty Name="StawkaNetto" ColumnName="StawkaNetto" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+                <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PozycjaUmowy">
+            <EntityTypeMapping TypeName="TranslateITModel.PozycjaUmowy">
+              <MappingFragment StoreEntitySet="PozycjaUmowy">
+                <ScalarProperty Name="IdStatusuUmowy" ColumnName="IdStatusuUmowy" />
+                <ScalarProperty Name="IdUmowy" ColumnName="IdUmowy" />
+                <ScalarProperty Name="IdProjektu" ColumnName="IdProjektu" />
+                <ScalarProperty Name="IdStawki" ColumnName="IdStawki" />
+                <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="StawkaBrutto" ColumnName="StawkaBrutto" />
+                <ScalarProperty Name="StawkaNetto" ColumnName="StawkaNetto" />
+                <ScalarProperty Name="Zaliczka" ColumnName="Zaliczka" />
+                <ScalarProperty Name="OpisWspolpracy" ColumnName="OpisWspolpracy" />
+                <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pracownik">
+            <EntityTypeMapping TypeName="TranslateITModel.Pracownik">
+              <MappingFragment StoreEntitySet="Pracownik">
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="DrugieImie" ColumnName="DrugieImie" />
+                <ScalarProperty Name="Nazwisko_a" ColumnName="Nazwisko/a" />
+                <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+                <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="nrKonta" ColumnName="nrKonta" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="Ubezpieczenie" ColumnName="Ubezpieczenie" />
+                <ScalarProperty Name="nrDowodu" ColumnName="nrDowodu" />
+                <ScalarProperty Name="nrPaszportu" ColumnName="nrPaszportu" />
+                <ScalarProperty Name="StatusStudenta" ColumnName="StatusStudenta" />
+                <ScalarProperty Name="ImieMamy" ColumnName="ImieMamy" />
+                <ScalarProperty Name="ImieOjca" ColumnName="ImieOjca" />
+                <ScalarProperty Name="OsobaKontaktowa" ColumnName="OsobaKontaktowa" />
+                <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+                <ScalarProperty Name="NrTelefonu1" ColumnName="NrTelefonu1" />
+                <ScalarProperty Name="NrTelefonu2" ColumnName="NrTelefonu2" />
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="REGON" ColumnName="REGON" />
+                <ScalarProperty Name="RodzajZatrudnienia" ColumnName="RodzajZatrudnienia" />
+                <ScalarProperty Name="DataNawiazaniaWspolpracy" ColumnName="DataNawiazaniaWspolpracy" />
+                <ScalarProperty Name="IdFirmy" ColumnName="IdFirmy" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projekt">
+            <EntityTypeMapping TypeName="TranslateITModel.Projekt">
+              <MappingFragment StoreEntitySet="Projekt">
+                <ScalarProperty Name="IdProjektu" ColumnName="IdProjektu" />
+                <ScalarProperty Name="IdFirma" ColumnName="IdFirma" />
+                <ScalarProperty Name="IdKoordynatoraLektor" ColumnName="IdKoordynatoraLektor" />
+                <ScalarProperty Name="IdKoordynatoraDubbing" ColumnName="IdKoordynatoraDubbing" />
+                <ScalarProperty Name="IdKoordynatoraNapisy" ColumnName="IdKoordynatoraNapisy" />
+                <ScalarProperty Name="IdTlumaczaNapisy" ColumnName="IdTlumaczaNapisy" />
+                <ScalarProperty Name="IdTlumaczaDubbing" ColumnName="IdTlumaczaDubbing" />
+                <ScalarProperty Name="IdTlumaczaLektor" ColumnName="IdTlumaczaLektor" />
+                <ScalarProperty Name="IdEtapuProjektu" ColumnName="IdEtapuProjektu" />
+                <ScalarProperty Name="CzyLektor" ColumnName="CzyLektor" />
+                <ScalarProperty Name="CzyNapisy" ColumnName="CzyNapisy" />
+                <ScalarProperty Name="CzyDubbing" ColumnName="CzyDubbing" />
+                <ScalarProperty Name="IdJezykaOryginalnego" ColumnName="IdJezykaOryginalnego" />
+                <ScalarProperty Name="IdJezykaTlumaczenia" ColumnName="IdJezykaTlumaczenia" />
+                <ScalarProperty Name="Budzet" ColumnName="Budzet" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezyserzy">
+            <EntityTypeMapping TypeName="TranslateITModel.Rezyserzy">
+              <MappingFragment StoreEntitySet="Rezyserzy">
+                <ScalarProperty Name="IdRezysera" ColumnName="IdRezysera" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="OpisRezysera" ColumnName="OpisRezysera" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodzajUmowy">
+            <EntityTypeMapping TypeName="TranslateITModel.RodzajUmowy">
+              <MappingFragment StoreEntitySet="RodzajUmowy">
+                <ScalarProperty Name="IdRodzajuUmowy" ColumnName="IdRodzajuUmowy" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaNagraniowa">
+            <EntityTypeMapping TypeName="TranslateITModel.SalaNagraniowa">
+              <MappingFragment StoreEntitySet="SalaNagraniowa">
+                <ScalarProperty Name="IdSaliNagraniowej" ColumnName="IdSaliNagraniowej" />
+                <ScalarProperty Name="NumerSaliNagraniowej" ColumnName="NumerSaliNagraniowej" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serial">
+            <EntityTypeMapping TypeName="TranslateITModel.Serial">
+              <MappingFragment StoreEntitySet="Serial">
+                <ScalarProperty Name="IdSerialu" ColumnName="IdSerialu" />
+                <ScalarProperty Name="OryginalnyTytul" ColumnName="OryginalnyTytul" />
+                <ScalarProperty Name="LogoSerialu" ColumnName="LogoSerialu" />
+                <ScalarProperty Name="TytułSerialuTlumaczenie" ColumnName="TytułSerialuTlumaczenie" />
+                <ScalarProperty Name="NameCode" ColumnName="NameCode" />
+                <ScalarProperty Name="IloscSezonow" ColumnName="IloscSezonow" />
+                <ScalarProperty Name="IloscOdcinkow" ColumnName="IloscOdcinkow" />
+                <ScalarProperty Name="OcenaFilmweb" ColumnName="OcenaFilmweb" />
+                <ScalarProperty Name="WWWDoFilmweb" ColumnName="WWWDoFilmweb" />
+                <ScalarProperty Name="TlumaczoneOd" ColumnName="TlumaczoneOd" />
+                <ScalarProperty Name="DataProdukcji" ColumnName="DataProdukcji" />
+                <ScalarProperty Name="CzyNadalNagrywany" ColumnName="CzyNadalNagrywany" />
+                <ScalarProperty Name="RokZakonczeniaProdukcji" ColumnName="RokZakonczeniaProdukcji" />
+                <ScalarProperty Name="TlumaczoneDla" ColumnName="TlumaczoneDla" />
+                <ScalarProperty Name="IdKrajProdukcji" ColumnName="IdKrajProdukcji" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sezony">
+            <EntityTypeMapping TypeName="TranslateITModel.Sezony">
+              <MappingFragment StoreEntitySet="Sezony">
+                <ScalarProperty Name="IdSezonu" ColumnName="IdSezonu" />
+                <ScalarProperty Name="IdSerialu" ColumnName="IdSerialu" />
+                <ScalarProperty Name="NumerSezonu" ColumnName="NumerSezonu" />
+                <ScalarProperty Name="NazwaSezonu" ColumnName="NazwaSezonu" />
+                <ScalarProperty Name="IloscOdcinkow" ColumnName="IloscOdcinkow" />
+                <ScalarProperty Name="OpisSezonu" ColumnName="OpisSezonu" />
+                <ScalarProperty Name="OcenaSezonuFilmweb" ColumnName="OcenaSezonuFilmweb" />
+                <ScalarProperty Name="OcenaSezonuIMDB" ColumnName="OcenaSezonuIMDB" />
+                <ScalarProperty Name="WWWIMDB" ColumnName="WWWIMDB" />
+                <ScalarProperty Name="WWWFilmweb" ColumnName="WWWFilmweb" />
+                <ScalarProperty Name="IloscPostaci" ColumnName="IloscPostaci" />
+                <ScalarProperty Name="IloscPiosenek" ColumnName="IloscPiosenek" />
+                <ScalarProperty Name="DataProdukcji" ColumnName="DataProdukcji" />
+                <ScalarProperty Name="PremieraWPolsce" ColumnName="PremieraWPolsce" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SposobPlatnosci">
+            <EntityTypeMapping TypeName="TranslateITModel.SposobPlatnosci">
+              <MappingFragment StoreEntitySet="SposobPlatnosci">
+                <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stawki">
+            <EntityTypeMapping TypeName="TranslateITModel.Stawki">
+              <MappingFragment StoreEntitySet="Stawki">
+                <ScalarProperty Name="IdStawki" ColumnName="IdStawki" />
+                <ScalarProperty Name="RodzajStawki" ColumnName="RodzajStawki" />
+                <ScalarProperty Name="Stawka" ColumnName="Stawka" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TranslateITModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tlumacze">
+            <EntityTypeMapping TypeName="TranslateITModel.Tlumacze">
+              <MappingFragment StoreEntitySet="Tlumacze">
+                <ScalarProperty Name="IdTlumacza" ColumnName="IdTlumacza" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="OpisTlumacza" ColumnName="OpisTlumacza" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trailer">
+            <EntityTypeMapping TypeName="TranslateITModel.Trailer">
+              <MappingFragment StoreEntitySet="Trailer">
+                <ScalarProperty Name="IdTrailera" ColumnName="IdTrailera" />
+                <ScalarProperty Name="IdProjektu" ColumnName="IdProjektu" />
+                <ScalarProperty Name="OryginalnaNazwa" ColumnName="OryginalnaNazwa" />
+                <ScalarProperty Name="NazwaTrailera" ColumnName="NazwaTrailera" />
+                <ScalarProperty Name="DlugoscTrailera" ColumnName="DlugoscTrailera" />
+                <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+                <ScalarProperty Name="CzyAktywne" ColumnName="CzyAktywne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Umowa">
+            <EntityTypeMapping TypeName="TranslateITModel.Umowa">
+              <MappingFragment StoreEntitySet="Umowa">
+                <ScalarProperty Name="IdUmowy" ColumnName="IdUmowy" />
+                <ScalarProperty Name="Numer" ColumnName="Numer" />
+                <ScalarProperty Name="DataWystawienia" ColumnName="DataWystawienia" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="IdFirmy" ColumnName="IdFirmy" />
+                <ScalarProperty Name="TerminPlatnosci" ColumnName="TerminPlatnosci" />
+                <ScalarProperty Name="CzyZatwierdzona" ColumnName="CzyZatwierdzona" />
+                <ScalarProperty Name="IdRodzajuUmowy" ColumnName="IdRodzajuUmowy" />
+                <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+                <ScalarProperty Name="OpisWspolpracy" ColumnName="OpisWspolpracy" />
+                <ScalarProperty Name="CzyAktywna" ColumnName="CzyAktywna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="TranslateITModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="TranslateITModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="TranslateITModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="TranslateITModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TranslateITModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="TranslateITModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TranslateITModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TranslateITModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TranslateITModel.Store.sp_upgraddiagrams" />
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
